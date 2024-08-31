@@ -1,0 +1,101 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+@layer base 
+  :root 
+    --background: 210, 28%, 17%, 1
+    --primary: 207, 25%, 23%, 1
+    --secondary: 207, 22%, 33%, 1
+    --accent: 213, 99%, 65%, 1
+    --text-primary: 0, 0%, 100%, 1
+    --text-secondary: 0, 0%, 100%, 1
+    --radius: 10px
+
+html 
+  font-size: 62.5%
+  scroll-behavior: smooth
+
+body
+  font-family: "Montserrat", sans-serif
+  font-weight: 300
+  background-color: hsla(var(--background))
+  
+* 
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+::-webkit-scrollbar
+  width: 0
+  height: 0
+
+@media screen and (prefers-reduced-motion: reduce) 
+  html 
+    scroll-behavior: auto
+
+@media (min-width: 280px)
+  html
+    font-size: 45%
+  .indicator
+    width: 2.7rem 
+    height: 2.7rem 
+
+@media (min-width: 300px)
+  html
+    font-size: 48%
+  .indicator
+    width: 2.5rem 
+    height: 2.5rem 
+
+@media (min-width: 320px)
+  html
+    font-size: 51%
+  .indicator
+    width: 2.5rem 
+    height: 2.5rem 
+
+@media (min-width: 340px)
+  html
+    font-size: 54%
+  .indicator
+    width: 2.5rem 
+    height: 2.5rem 
+
+@media (min-width: 360px)
+  html
+    font-size: 57%
+  .indicator
+    width: 2.3rem 
+    height: 2.3rem 
+
+@media (min-width: 380px)
+  html
+    font-size: 60%
+  .indicator
+    width: 2rem 
+    height: 2rem 
+
+@media (min-width: 400px)
+  html
+    font-size: 62.5%
+
+@media (min-height: 350px)
+  .no-schedule
+    margin-bottom: calc(100vh - 30rem)
+
+button
+  @apply transition-colors duration-300
+  &:active
+    @apply bg-accent
+
+.loader 
+  margin: 2rem auto
+  width: 2rem
+  height: 2rem
+  border: .3rem solid #4D9EFE
+  border-bottom-color: #2B3B48
+  border-radius: 50%
+  display: inline-block
+  box-sizing: border-box
+  animation: rotation 1s linear infinite
