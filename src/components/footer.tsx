@@ -6,28 +6,28 @@ export const Footer: React.FC = () => {
   return (
     <>
       {!loading && (
-        <footer className="opacity-40 mb-[2rem] px-[1rem]">
+        <footer className="opacity-40 mb-[2rem] px-[1rem] h-[8rem]">
           <div className="flex justify-center items-center mb-[2rem]">
             <div className="w-[8.5rem] h-0 border-b-[.1rem] border-solid border-white mr-[1rem] last:mr-0" />
-            <div className="text-[1.1rem] mr-[1rem] font-normal">
+            <div className="text-[1.5rem] mr-[1rem] font-normal">
               ByGroup344© 2024
             </div>
             <div className="w-[8.5rem] h-0 border-b-[.1rem] border-solid border-white mr-[1rem] last:mr-0" />
           </div>
           <div className="flex justify-between">
-            <a href="https://t.me/VinGP">
+            <a href="https://t.me/VinGP" className="text-[1.5rem]">
               <div className="inline-block mr-[1rem]">
                 <img src="/assets/images/tg.svg" alt="tg icon" />
               </div>
               BackEnd
             </a>
-            <a href="https://t.me/Andrew13145">
+            <a href="https://t.me/Andrew13145" className="text-[1.5rem]">
               <div className="inline-block mr-[1rem]">
                 <img src="/assets/images/tg.svg" alt="tg icon" />
               </div>
               FrontEnd
             </a>
-            <a href="https://t.me/y_sklv">
+            <a href="https://t.me/y_sklv" className="text-[1.5rem]">
               <div className="inline-block mr-[1rem]">
                 <img src="/assets/images/tg.svg" alt="tg icon" />
               </div>

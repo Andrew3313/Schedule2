@@ -48,7 +48,7 @@ export const customStylesSelectDepartment: StylesConfig<any> = {
   menuList: (provided) => ({
     ...provided,
     padding: 0,
-    maxHeight: "17rem",
+    maxHeight: "22rem",
     overflowY: "auto",
     scrollbarWidth: "thin",
     scrollbarColor: "#2589FF #4097FF",
@@ -120,7 +120,7 @@ export const customStylesSelectGroup: StylesConfig<any> = {
   menuList: (provided) => ({
     ...provided,
     padding: 0,
-    maxHeight: "17rem",
+    maxHeight: "22rem",
     overflowY: "auto",
     scrollbarWidth: "thin",
     scrollbarColor: "#2589FF #4097FF",

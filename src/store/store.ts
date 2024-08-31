@@ -15,6 +15,8 @@ export const useStore = create<IStore>()(
         presentDay: "",
         currentWeek: "",
         loading: false,
+        isOpenDepartment: false,
+        isOpenGroup: false,
         setFaculty: (faculty) =>
           set((state) => ({
             ...state,
@@ -59,6 +61,16 @@ export const useStore = create<IStore>()(
           set((state) => ({
             ...state,
             currentWeek,
+          })),
+        setIsOpenDepartment: (isOpenDepartment) =>
+          set((state) => ({
+            ...state,
+            isOpenDepartment,
+          })),
+        setIsOpenGroup: (isOpenGroup) =>
+          set((state) => ({
+            ...state,
+            isOpenGroup,
           })),
       }),
       {

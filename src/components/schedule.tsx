@@ -77,7 +77,7 @@ export const Schedule: React.FC = () => {
       ) : (
         isSuccess && (
           <div className="flex w-full justify-center py-[1.5rem] px-[1rem] rounded-[1rem] bg-primary mb-[.5rem] no-schedule">
-            <h2 className="font-normal text-[1.1rem]">
+            <h2 className="font-normal text-[1.5rem]">
               В этот день нет занятий
             </h2>
           </div>

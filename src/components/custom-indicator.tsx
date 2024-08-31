@@ -1,10 +1,24 @@
 import cn from "classnames";
+import { useStore } from "../store/store";
+import React from "react";
 
 interface Props {
-  isOpen: boolean;
+  text: string;
 }
 
-export const CustomIndicator: React.FC<Props> = ({ isOpen }) => {
+export const CustomIndicator: React.FC<Props> = ({ text }) => {
+  const isOpenDepartment = useStore((state) => state.isOpenDepartment);
+  const setIsOpenDepartment = useStore((state) => state.setIsOpenDepartment);
+  const isOpenGroup = useStore((state) => state.isOpenGroup);
+  const setIsOpenGroup = useStore((state) => state.setIsOpenGroup);
+
+  const isOpen = text === 'Факультет' ? isOpenDepartment : isOpenGroup;
+  const setIsOpen = text === 'Факультет' ? setIsOpenDepartment : setIsOpenGroup;
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div
       className={cn(
@@ -14,6 +28,7 @@ export const CustomIndicator: React.FC<Props> = ({ isOpen }) => {
           'bg-[url("/assets/images/up-arrow.svg")]': isOpen,
         }
       )}
+      onClick={handleClick}
     />
   );
 };

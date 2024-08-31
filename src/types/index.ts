@@ -8,6 +8,8 @@ export interface IStore {
   presentDay: string;
   currentWeek: string;
   loading: boolean;
+  isOpenDepartment: boolean;
+  isOpenGroup: boolean;
   setSelectedCourse: (course: number) => void;
   setFaculty: (faculty: string) => void;
   setGroup: (group: string) => void;
@@ -17,6 +19,8 @@ export interface IStore {
   setDayEn: (dayEn: string) => void;
   setPresentDay: (today: string) => void;
   setCurrentWeek: (currentWeek: string) => void;
+  setIsOpenDepartment: (isOpenDepartment: boolean) => void;
+  setIsOpenGroup: (isOpenGroup: boolean) => void;
 }
 
 export interface IFaculties {

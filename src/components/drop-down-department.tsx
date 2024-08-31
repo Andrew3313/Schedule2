@@ -18,13 +18,14 @@ interface FacultyOption {
 export const DropDownDepartment: React.FC<Props> = ({ className }) => {
   const faculty = useStore((state) => state.faculty);
   const setFaculty = useStore((state) => state.setFaculty);
-  const [isOpen, setIsOpen] = React.useState(false);
+  const setIsOpenDepartment = useStore((state) => state.setIsOpenDepartment);
   const [optionsValue, setOptionsValue] = React.useState<FacultyOption>({
     value: faculty,
     label: faculty,
   });
 
   const { faculties, isLoading, error } = useFaculty();
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const options = faculties?.map((faculty) => ({
     value: faculty.toLocaleUpperCase(),
@@ -33,6 +34,8 @@ export const DropDownDepartment: React.FC<Props> = ({ className }) => {
 
   const handleFacultyChange = (selectedOption: FacultyOption) => {
     setFaculty(selectedOption.value);
+    setIsMenuOpen(false);
+    setIsOpenDepartment(false);
   };
 
   React.useEffect(() => {
@@ -49,16 +52,23 @@ export const DropDownDepartment: React.FC<Props> = ({ className }) => {
       options={options}
       styles={customStylesSelectDepartment}
       components={{
-        DropdownIndicator: () => <CustomIndicator isOpen={isOpen} />,
+        DropdownIndicator: () => <CustomIndicator text="Факультет" />,
       }}
       isSearchable={false}
       placeholder={""}
       onChange={handleFacultyChange}
       value={isLoading || !!error ? null : optionsValue}
-      onMenuOpen={() => setIsOpen(true)}
-      onMenuClose={() => setIsOpen(false)}
+      onMenuOpen={() => {
+        setIsMenuOpen(true);
+        setIsOpenDepartment(true);
+      }}
+      onMenuClose={() => {
+        setIsMenuOpen(false);
+        setIsOpenDepartment(false);
+      }}
       className={className}
       isDisabled={isLoading || !!error}
+      menuIsOpen={isMenuOpen}
     />
   );
 };
