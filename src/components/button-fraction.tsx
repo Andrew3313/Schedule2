@@ -29,7 +29,7 @@ export const ButtonFraction: React.FC<Props> = ({
     <button
       onClick={handleWeekChange}
       className={cn(
-        "bg-primary border-none text-[1.8rem] font-light text-textPrimary",
+        "bg-primary border-none text-[1.8rem] font-light text-textPrimary cursor-pointer",
         {
           "!bg-accent": fraction === week,
         },

@@ -50,8 +50,8 @@ export const customStylesSelectDepartment: StylesConfig<any> = {
     padding: 0,
     maxHeight: "22rem",
     overflowY: "auto",
-    scrollbarWidth: "none",
-    // scrollbarColor: "#243F4F #2A4D5E",
+    scrollbarWidth: "thin",
+    scrollbarColor: "#4B8B8B #2A4D5E",
   }),
   option: (provided) => ({
     ...provided,
@@ -122,8 +122,8 @@ export const customStylesSelectGroup: StylesConfig<any> = {
     padding: 0,
     maxHeight: "22rem",
     overflowY: "auto",
-    scrollbarWidth: "none",
-    // scrollbarColor: "#4B8B8B  #2A4D5E",
+    scrollbarWidth: "thin",
+    scrollbarColor: "#4B8B8B #2A4D5E",
   }),
   option: (provided) => ({
     ...provided,
