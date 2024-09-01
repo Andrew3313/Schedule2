@@ -39,7 +39,7 @@ export const customStylesSelectDepartment: StylesConfig<any> = {
   menu: (provided) => ({
     ...provided,
     marginTop: 0,
-    backgroundColor: "#4097FF",
+    backgroundColor: "#2A4D5E",
     borderRadius: "0.5rem",
     border: "none",
     boxShadow: "none",
@@ -50,14 +50,14 @@ export const customStylesSelectDepartment: StylesConfig<any> = {
     padding: 0,
     maxHeight: "22rem",
     overflowY: "auto",
-    scrollbarWidth: "thin",
-    scrollbarColor: "#2589FF #4097FF",
+    scrollbarWidth: "none",
+    // scrollbarColor: "#243F4F #2A4D5E",
   }),
   option: (provided) => ({
     ...provided,
     display: "flex",
     justifyContent: "center",
-    backgroundColor: "#4097FF",
+    backgroundColor: "#2A4D5E", // #2A4D5E #2B3E4D #1C3F4D #1A3B4D
     color: "white",
     padding: "1.5rem 1rem",
     fontSize: "1.5rem",
@@ -65,7 +65,7 @@ export const customStylesSelectDepartment: StylesConfig<any> = {
     lineHeight: "1.75",
     cursor: "pointer",
     "&:hover": {
-      backgroundColor: "#2589FF",
+      backgroundColor: "#4B8B8B",
     },
   }),
   indicatorSeparator: () => ({
@@ -111,7 +111,7 @@ export const customStylesSelectGroup: StylesConfig<any> = {
   menu: (provided) => ({
     ...provided,
     marginTop: 0,
-    backgroundColor: "#4097FF",
+    backgroundColor: "#2A4D5E",
     borderRadius: "0.5rem",
     border: "none",
     boxShadow: "none",
@@ -122,14 +122,14 @@ export const customStylesSelectGroup: StylesConfig<any> = {
     padding: 0,
     maxHeight: "22rem",
     overflowY: "auto",
-    scrollbarWidth: "thin",
-    scrollbarColor: "#2589FF #4097FF",
+    scrollbarWidth: "none",
+    // scrollbarColor: "#4B8B8B  #2A4D5E",
   }),
   option: (provided) => ({
     ...provided,
     display: "flex",
     justifyContent: "center",
-    backgroundColor: "#4097FF",
+    backgroundColor: "#2A4D5E",
     color: "white",
     padding: "1.5rem 2.3rem",
     fontSize: "1.5rem",
@@ -137,7 +137,7 @@ export const customStylesSelectGroup: StylesConfig<any> = {
     lineHeight: "1.75",
     cursor: "pointer",
     "&:hover": {
-      backgroundColor: "#2589FF",
+      backgroundColor: "#4B8B8B",
     },
   }),
   indicatorSeparator: () => ({

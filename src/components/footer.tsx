@@ -8,11 +8,11 @@ export const Footer: React.FC = () => {
       {!loading && (
         <footer className="opacity-40 mb-[2rem] px-[1rem] h-[8rem]">
           <div className="flex justify-center items-center mb-[2rem]">
-            <div className="w-[8.5rem] h-0 border-b-[.1rem] border-solid border-white mr-[1rem] last:mr-0" />
+            <div className="w-[8.5rem] h-0 border-b-[.1rem] border-solid border-[#4B8B8B] mr-[1rem] last:mr-0" />
             <div className="text-[1.5rem] mr-[1rem] font-normal">
               ByGroup344© 2024
             </div>
-            <div className="w-[8.5rem] h-0 border-b-[.1rem] border-solid border-white mr-[1rem] last:mr-0" />
+            <div className="w-[8.5rem] h-0 border-b-[.1rem] border-solid border-[#4B8B8B] mr-[1rem] last:mr-0" />
           </div>
           <div className="flex justify-between">
             <a href="https://t.me/VinGP" className="text-[1.5rem]">

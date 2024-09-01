@@ -6,6 +6,7 @@ import { Day } from "./day";
 import { DropDownDepartment } from "./drop-down-department";
 import { useStore } from "../store/store";
 import { useCurrentDay } from "../hooks/useCurrentDay";
+import cn from "classnames";
 
 export const TopBar: React.FC = () => {
   const setCurrentDay = useStore((state) => state.setDay);
@@ -38,7 +39,10 @@ export const TopBar: React.FC = () => {
         <ButtonFraction
           key={fraction}
           fraction={fraction}
-          className="col-span-3 rounded-bl-[1rem]"
+          className={cn("col-span-3", {
+            "rounded-bl-[1rem]": fraction === "ЧИСЛИТЕЛЬ",
+            "rounded-br-[1rem]": fraction === "ЗНАМЕНАТЕЛЬ",
+          })}
           isLoading={isLoading}
           error={error}
         />
