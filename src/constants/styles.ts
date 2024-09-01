@@ -1,39 +1,34 @@
 import { StylesConfig } from "react-select";
 
-export const customStylesSelectDepartment: StylesConfig<any> = {
+export const customStylesSelect: StylesConfig<any> = {
   placeholder: (provided) => ({
     ...provided,
     color: "white",
     fontFamily: "Montserrat, sans-serif",
-    padding: 0,
     margin: 0,
   }),
   singleValue: (provided) => ({
     ...provided,
     color: "white",
     padding: 0,
+    display: "flex",
+    alignItems: "center",
   }),
   control: (provided) => ({
     ...provided,
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
     backgroundColor: "#2B3B48",
     borderRadius: 0,
     border: "none",
     boxShadow: "none",
     height: "5rem",
-    MaxWidth: "16.5rem",
-    padding: "1.5rem 1rem",
+    padding: "0 1rem",
     fontSize: "1.5rem",
-    fontWeight: "normal",
     color: "white",
     cursor: "pointer",
     "&:hover": {
       border: "none",
-    },
-    "& .css-hlgwow": {
-      padding: 0,
     },
   }),
   menu: (provided) => ({
@@ -47,83 +42,17 @@ export const customStylesSelectDepartment: StylesConfig<any> = {
   }),
   menuList: (provided) => ({
     ...provided,
-    padding: 0,
     maxHeight: "22rem",
     overflowY: "auto",
     scrollbarWidth: "thin",
     scrollbarColor: "#4B8B8B #2A4D5E",
+    WebkitOverflowScrolling: 'touch',
   }),
-  option: (provided) => ({
-    ...provided,
-    display: "flex",
-    justifyContent: "center",
-    backgroundColor: "#2A4D5E", // #2A4D5E #2B3E4D #1C3F4D #1A3B4D
-    color: "white",
-    padding: "1.5rem 1rem",
-    fontSize: "1.5rem",
-    fontWeight: "normal",
-    lineHeight: "1.75",
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: "#4B8B8B",
-    },
-  }),
-  indicatorSeparator: () => ({
-    display: "none",
-  }),
-};
-
-export const customStylesSelectGroup: StylesConfig<any> = {
-  placeholder: (provided) => ({
-    ...provided,
-    color: "white",
-    fontFamily: "Montserrat, sans-serif",
-    padding: 0,
-    margin: 0,
-  }),
-  singleValue: (provided) => ({
-    ...provided,
-    color: "white",
-    padding: 0,
-  }),
-  control: (provided) => ({
+  valueContainer: (provided) => ({
     ...provided,
     display: "flex",
     alignItems: "center",
-    backgroundColor: "#2B3B48",
-    borderRadius: 0,
-    border: "none",
-    boxShadow: "none",
-    height: "5rem",
-    MaxWidth: "11rem",
-    padding: "1.5rem 1rem",
-    fontSize: "1.5rem",
-    fontWeight: "normal",
-    color: "white",
-    cursor: "pointer",
-    "&:hover": {
-      border: "none",
-    },
-    "& .css-hlgwow": {
-      padding: 0,
-    },
-  }),
-  menu: (provided) => ({
-    ...provided,
-    marginTop: 0,
-    backgroundColor: "#2A4D5E",
-    borderRadius: "0.5rem",
-    border: "none",
-    boxShadow: "none",
-    padding: "1rem 0",
-  }),
-  menuList: (provided) => ({
-    ...provided,
     padding: 0,
-    maxHeight: "22rem",
-    overflowY: "auto",
-    scrollbarWidth: "thin",
-    scrollbarColor: "#4B8B8B #2A4D5E",
   }),
   option: (provided) => ({
     ...provided,
@@ -134,10 +63,20 @@ export const customStylesSelectGroup: StylesConfig<any> = {
     padding: "1.5rem 2.3rem",
     fontSize: "1.5rem",
     fontWeight: "normal",
-    lineHeight: "1.75",
     cursor: "pointer",
     "&:hover": {
       backgroundColor: "#4B8B8B",
+    },
+  }),
+  dropdownIndicator: (provided) => ({
+    ...provided,
+    display: "flex",
+    alignItems: "center",
+    color: "#4D9EFE",
+    padding: 0,
+    transition: "color 0.2s ease",
+    "&:hover": {
+      color: "white",
     },
   }),
   indicatorSeparator: () => ({

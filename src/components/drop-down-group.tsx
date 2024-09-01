@@ -1,7 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import { CustomIndicator } from "./custom-indicator";
-import { customStylesSelectGroup } from "../constants/styles";
+import { customStylesSelect } from "../constants/styles";
 import { useStore } from "../store/store";
 import { useGroupsByFacultyAndCourse } from "../hooks/useGroupsByFacultyAndCourse";
 
@@ -86,10 +85,7 @@ export const DropDownGroup: React.FC<Props> = ({ className }) => {
   return (
     <Select
       options={options}
-      styles={customStylesSelectGroup}
-      components={{
-        DropdownIndicator: () => <CustomIndicator text="Группа" />,
-      }}
+      styles={customStylesSelect}
       isSearchable={false}
       placeholder={""}
       onChange={handleGroupChange}

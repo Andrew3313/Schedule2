@@ -1,7 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import { CustomIndicator } from "./custom-indicator";
-import { customStylesSelectDepartment } from "../constants/styles";
+import { customStylesSelect } from "../constants/styles";
 import { useStore } from "../store/store";
 import { useFaculty } from "../hooks/useFaculty";
 
@@ -50,10 +49,7 @@ export const DropDownDepartment: React.FC<Props> = ({ className }) => {
   return (
     <Select
       options={options}
-      styles={customStylesSelectDepartment}
-      components={{
-        DropdownIndicator: () => <CustomIndicator text="Факультет" />,
-      }}
+      styles={customStylesSelect}
       isSearchable={false}
       placeholder={""}
       onChange={handleFacultyChange}
