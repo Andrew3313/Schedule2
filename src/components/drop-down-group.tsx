@@ -24,25 +24,24 @@ interface StoredGroup {
 }
 
 export const DropDownGroup: React.FC<Props> = ({ className }) => {
-  const [optionsValue, setOptionsValue] = React.useState<GroupOption | null>(
-    null
-  );
+  const [optionsValue, setOptionsValue] = React.useState<GroupOption | null>(null);
   const group = useStore((state) => state.group);
   const setGroup = useStore((state) => state.setGroup);
   const setIsOpenGroup = useStore((state) => state.setIsOpenGroup);
   const faculty = useStore((state) => state.faculty);
   const selectedCourse = useStore((state) => state.selectedCourse);
-  const { groups, isLoading, error } = useGroupsByFacultyAndCourse(
-    faculty,
-    selectedCourse
-  );
+  const { groups, isLoading, error } = useGroupsByFacultyAndCourse(faculty, selectedCourse);
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const options = groups?.map((group) => ({
-    value: group.toLocaleUpperCase(),
-    label: group.toLocaleUpperCase(),
-  }));
+  const options = React.useMemo(() => {
+    return groups
+      ?.filter(groupItem => groupItem !== group)
+      .map((groupItem) => ({
+        value: groupItem.toLocaleUpperCase(),
+        label: groupItem.toLocaleUpperCase(),
+      })) || [];
+  }, [groups, group]);
 
   const handleGroupChange = React.useCallback(
     (value: GroupOption | null) => {
@@ -79,6 +78,8 @@ export const DropDownGroup: React.FC<Props> = ({ className }) => {
         value: group,
         label: group,
       });
+    } else {
+      setOptionsValue(null);
     }
   }, [group]);
 

@@ -48,7 +48,7 @@ export const Day: React.FC<Props> = ({ day, isLoading, error, className }) => {
   return (
     <button
       className={cn(
-        "bg-primary border-none text-[1.8rem] font-light text-textPrimary",
+        "bg-primary border-none text-[1.8rem] font-light text-textPrimary transition duration-100 ease-out",
         {
           "rounded-l-[1rem]": day === "Пн",
           "rounded-br-[1rem]": day === "Ср",

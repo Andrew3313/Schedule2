@@ -18,18 +18,19 @@ export const DropDownDepartment: React.FC<Props> = ({ className }) => {
   const faculty = useStore((state) => state.faculty);
   const setFaculty = useStore((state) => state.setFaculty);
   const setIsOpenDepartment = useStore((state) => state.setIsOpenDepartment);
-  const [optionsValue, setOptionsValue] = React.useState<FacultyOption>({
-    value: faculty,
-    label: faculty,
-  });
+  const [optionsValue, setOptionsValue] = React.useState<FacultyOption | null>(null);
 
   const { faculties, isLoading, error } = useFaculty();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const options = faculties?.map((faculty) => ({
-    value: faculty.toLocaleUpperCase(),
-    label: faculty.toLocaleUpperCase(),
-  }));
+  const options = React.useMemo(() => {
+    return faculties
+      ?.filter(fac => fac.toLocaleUpperCase() !== faculty)
+      .map((faculty) => ({
+        value: faculty.toLocaleUpperCase(),
+        label: faculty.toLocaleUpperCase(),
+      })) || [];
+  }, [faculties, faculty]);
 
   const handleFacultyChange = (selectedOption: FacultyOption) => {
     setFaculty(selectedOption.value);
@@ -43,6 +44,8 @@ export const DropDownDepartment: React.FC<Props> = ({ className }) => {
         value: faculty,
         label: faculty,
       });
+    } else {
+      setOptionsValue(null);
     }
   }, [faculty]);
 

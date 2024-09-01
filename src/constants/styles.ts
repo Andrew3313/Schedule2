@@ -42,11 +42,13 @@ export const customStylesSelect: StylesConfig<any> = {
   }),
   menuList: (provided) => ({
     ...provided,
-    maxHeight: "22rem",
+    maxHeight: "16rem",
     overflowY: "auto",
     scrollbarWidth: "thin",
     scrollbarColor: "#4B8B8B #2A4D5E",
-    WebkitOverflowScrolling: 'touch',
+    WebkitOverflowScrolling: "touch",
+    padding: 0,
+    margin: 0,
   }),
   valueContainer: (provided) => ({
     ...provided,
