@@ -13,12 +13,11 @@ const config = {
     },
     extend: {
       colors: {
-        background: "hsla(var(--background))",
-        primary: "hsla(var(--primary))",
-        secondary: "hsla(var(--secondary))",
-        accent: "hsla(var(--accent))",
-        textPrimary: "hsla(var(--text-primary))",
-        textSecondary: "hsla(var(--text-secondary))",
+        background: "hsl(var(--background))",
+        primary: "hsl(var(--primary))",
+        secondary: "hsl(var(--secondary))",
+        accent: "hsl(var(--accent))",
+        textPrimary: "hsl(var(--text-primary))",
       },
       borderRadius: {
         lg: "var(--radius)",

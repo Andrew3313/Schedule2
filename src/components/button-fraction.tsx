@@ -31,7 +31,7 @@ export const ButtonFraction: React.FC<Props> = ({
       className={cn(
         "bg-primary border-none text-[1.8rem] font-light text-textPrimary cursor-pointer transition duration-100 ease-out",
         {
-          "!bg-accent": fraction === week,
+          "!bg-accent text-white": fraction === week,
         },
         className
       )}

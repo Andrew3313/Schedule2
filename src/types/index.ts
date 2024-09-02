@@ -1,3 +1,23 @@
+declare global {
+  interface Window {
+    Telegram: {
+      WebApp: TelegramWebApp;
+    };
+  }
+}
+
+export interface ThemeParams {
+  bg_color: string;
+  text_color: string;
+  link_color: string;
+}
+
+export interface TelegramWebApp {
+  ready: () => void;
+  expand: () => void;
+  themeParams: ThemeParams;
+}
+
 export interface IStore {
   selectedCourse: number;
   faculty: string;
@@ -8,8 +28,7 @@ export interface IStore {
   presentDay: string;
   currentWeek: string;
   loading: boolean;
-  isOpenDepartment: boolean;
-  isOpenGroup: boolean;
+  darkTheme: boolean;
   setSelectedCourse: (course: number) => void;
   setFaculty: (faculty: string) => void;
   setGroup: (group: string) => void;
@@ -19,8 +38,7 @@ export interface IStore {
   setDayEn: (dayEn: string) => void;
   setPresentDay: (today: string) => void;
   setCurrentWeek: (currentWeek: string) => void;
-  setIsOpenDepartment: (isOpenDepartment: boolean) => void;
-  setIsOpenGroup: (isOpenGroup: boolean) => void;
+  setDarkTheme: () => void;
 }
 
 export interface IFaculties {

@@ -1,5 +1,6 @@
 import React from "react";
 import Select from "react-select";
+import cn from "classnames";
 import { customStylesSelect } from "../constants/styles";
 import { useStore } from "../store/store";
 import { useGroupsByFacultyAndCourse } from "../hooks/useGroupsByFacultyAndCourse";
@@ -24,23 +25,29 @@ interface StoredGroup {
 }
 
 export const DropDownGroup: React.FC<Props> = ({ className }) => {
-  const [optionsValue, setOptionsValue] = React.useState<GroupOption | null>(null);
+  const [optionsValue, setOptionsValue] = React.useState<GroupOption | null>(
+    null
+  );
   const group = useStore((state) => state.group);
   const setGroup = useStore((state) => state.setGroup);
-  const setIsOpenGroup = useStore((state) => state.setIsOpenGroup);
   const faculty = useStore((state) => state.faculty);
   const selectedCourse = useStore((state) => state.selectedCourse);
-  const { groups, isLoading, error } = useGroupsByFacultyAndCourse(faculty, selectedCourse);
+  const { groups, isLoading, error } = useGroupsByFacultyAndCourse(
+    faculty,
+    selectedCourse
+  );
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const options = React.useMemo(() => {
-    return groups
-      ?.filter(groupItem => groupItem !== group)
-      .map((groupItem) => ({
-        value: groupItem.toLocaleUpperCase(),
-        label: groupItem.toLocaleUpperCase(),
-      })) || [];
+    return (
+      groups
+        ?.filter((groupItem) => groupItem !== group)
+        .map((groupItem) => ({
+          value: groupItem.toLocaleUpperCase(),
+          label: groupItem.toLocaleUpperCase(),
+        })) || [] 
+    );
   }, [groups, group]);
 
   const handleGroupChange = React.useCallback(
@@ -48,10 +55,9 @@ export const DropDownGroup: React.FC<Props> = ({ className }) => {
       if (value) {
         setGroup(value.value);
         setIsMenuOpen(false);
-        setIsOpenGroup(false);
       }
     },
-    [setGroup, setIsOpenGroup]
+    [setGroup]
   );
 
   React.useEffect(() => {
@@ -93,14 +99,12 @@ export const DropDownGroup: React.FC<Props> = ({ className }) => {
       value={optionsValue}
       onMenuOpen={() => {
         setIsMenuOpen(true);
-        setIsOpenGroup(true);
       }}
       onMenuClose={() => {
         setIsMenuOpen(false);
-        setIsOpenGroup(false);
       }}
-      className={className}
-      isDisabled={!faculty || isLoading || !groups || !!error}
+      className={cn(className, "group")}
+      isDisabled={!faculty || isLoading || !groups || !!error} 
       menuIsOpen={isMenuOpen}
     />
   );

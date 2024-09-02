@@ -29,7 +29,7 @@ export const Course: React.FC<Props> = ({ className }) => {
       onClick={handleCourseChange}
       disabled={isLoading || !courses || !!error}
       className={cn(
-        "course text-[2rem] cursor-pointer border-none bg-primary w-[5.5rem] h-[5rem]",
+        "course text-[2rem] cursor-pointer border-none bg-primary w-[5.5rem] h-[5rem]", // rounded-tl-[1rem]
         className,
         isLoading && "cursor-not-allowed"
       )}

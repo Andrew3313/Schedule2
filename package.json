@@ -20,6 +20,7 @@
     "react-dom": "^18.3.1",
     "react-select": "^5.8.0",
     "sass": "^1.77.8",
+    "telegram-webapps-types": "^1.0.5",
     "zustand": "^4.5.5"
   },
   "devDependencies": {

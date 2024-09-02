@@ -12,7 +12,7 @@ export const Container: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <div
       className={cn(
-        "mx-auto w-[39rem] bg-background h-screen overflow-auto text-textPrimary pt-[1.5rem] px-[1.5rem]",
+        "mx-auto w-[39rem] h-screen overflow-auto text-textPrimary pt-[1.5rem] px-[1.5rem]",
         className
       )}
     >

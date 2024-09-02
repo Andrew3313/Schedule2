@@ -2,15 +2,21 @@
 @tailwind components
 @tailwind utilities
 
-@layer base 
-  :root 
-    --background: 210, 28%, 17%, 1
-    --primary: 207, 25%, 23%, 1
-    --secondary: 207, 22%, 33%, 1
-    --accent: 213, 99%, 65%, 1
-    --text-primary: 0, 0%, 100%, 1
-    --text-secondary: 0, 0%, 100%, 1
-    --radius: 10px
+:root 
+  --background: 210, 28%, 17%, 1
+  --primary: 207, 25%, 23%, 1
+  --secondary: 207, 22%, 33%, 1
+  --accent: 213, 99%, 65%, 1
+  --text-primary: 0, 0%, 100%, 1
+  --radius: 10px
+
+.light
+  --background: 0, 0%, 90.39%, 1
+  --primary: 0, 0%, 100%, 1
+  --secondary: 0, 0%, 90.39%, 1
+  --accent: 213, 99%, 65%, 1
+  --text-primary: 0, 0%, 11.76%, 1
+  --radius: 10px
 
 html 
   font-size: 62.5%
@@ -30,14 +36,6 @@ body
   width: 0
   height: 0
 
-// ::-webkit-scrollbar
-//   width: .8rem
-//   height: .8rem 
-//   background-color: #2A4D5E 
-
-// ::-webkit-scrollbar-thumb 
-//   background-color: #4B8B8B
-
 @media screen and (prefers-reduced-motion: reduce) 
   html 
     scroll-behavior: auto
@@ -55,29 +53,29 @@ body
 
 @media (min-width: 280px)
   html
-    font-size: 46%
+    font-size: 44%
 
   .indicator
     width: 2.7rem 
     height: 2.7rem
   
   .course
-    height: 5.1rem !important
+    height: 5.3rem !important
   
 @media (min-width: 290px)
   html
-    font-size: 47%
+    font-size: 46%
 
   .indicator
     width: 2.7rem 
     height: 2.7rem 
 
   .course
-    height: 5rem !important
+    height: 5.1rem !important
 
 @media (min-width: 300px)
   html
-    font-size: 48%
+    font-size: 47%
 
   .indicator
     width: 2.5rem 
@@ -90,6 +88,9 @@ body
   .indicator
     width: 2.5rem 
     height: 2.5rem 
+
+  .course
+    height: 5rem !important
 
 @media (min-width: 320px)
   html
@@ -160,10 +161,13 @@ body
     font-size: 65%
 
 button
-  @apply transition-colors duration-300
+  position: relative
+  transition: all .3s
+  top: 0
   
   &:active
     @apply bg-accent
+    top: .2rem
 
 .loader 
   margin: 2rem auto
@@ -175,3 +179,33 @@ button
   display: inline-block
   box-sizing: border-box
   animation: rotation 1s linear infinite
+
+.group div
+  // border-radius: 0 1rem 0 0 
+  background-color: hsl(var(--primary))
+  color: hsl(var(--text-primary))
+
+.department div
+  background-color: hsl(var(--primary))
+  color: hsl(var(--text-primary))
+
+// .switch-slider::before
+//   content: ""
+//   position: absolute
+//   left: 0
+//   bottom: 0
+//   height: 1.6rem
+//   width: 1.6rem
+//   border-radius: 4rem
+//   background-color: #4D9EFE
+
+// .switch-input:focus + .switch-slider
+//   box-shadow: 0 0 .1rem #4D9EFE
+
+// .switch-input:checked + .switch-slider
+//   background-color: #2B3B48
+
+// .switch-input:checked + .switch-slider::before
+//   transform: translateX(1.4rem)
+//   -webkit-transform: translateX(1.4rem)
+//   -ms-transform: translateX(1.4rem)

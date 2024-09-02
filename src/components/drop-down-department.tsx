@@ -1,4 +1,5 @@
 import React from "react";
+import cn from "classnames";
 import Select from "react-select";
 import { customStylesSelect } from "../constants/styles";
 import { useStore } from "../store/store";
@@ -17,25 +18,27 @@ interface FacultyOption {
 export const DropDownDepartment: React.FC<Props> = ({ className }) => {
   const faculty = useStore((state) => state.faculty);
   const setFaculty = useStore((state) => state.setFaculty);
-  const setIsOpenDepartment = useStore((state) => state.setIsOpenDepartment);
-  const [optionsValue, setOptionsValue] = React.useState<FacultyOption | null>(null);
+  const [optionsValue, setOptionsValue] = React.useState<FacultyOption | null>(
+    null
+  );
 
   const { faculties, isLoading, error } = useFaculty();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const options = React.useMemo(() => {
-    return faculties
-      ?.filter(fac => fac.toLocaleUpperCase() !== faculty)
-      .map((faculty) => ({
-        value: faculty.toLocaleUpperCase(),
-        label: faculty.toLocaleUpperCase(),
-      })) || [];
+    return (
+      faculties
+        ?.filter((fac) => fac.toLocaleUpperCase() !== faculty)
+        .map((faculty) => ({
+          value: faculty.toLocaleUpperCase(),
+          label: faculty.toLocaleUpperCase(),
+        })) || []
+    );
   }, [faculties, faculty]);
 
   const handleFacultyChange = (selectedOption: FacultyOption) => {
     setFaculty(selectedOption.value);
     setIsMenuOpen(false);
-    setIsOpenDepartment(false);
   };
 
   React.useEffect(() => {
@@ -59,13 +62,11 @@ export const DropDownDepartment: React.FC<Props> = ({ className }) => {
       value={isLoading || !!error ? null : optionsValue}
       onMenuOpen={() => {
         setIsMenuOpen(true);
-        setIsOpenDepartment(true);
       }}
       onMenuClose={() => {
         setIsMenuOpen(false);
-        setIsOpenDepartment(false);
       }}
-      className={className}
+      className={cn(className, "department")}
       isDisabled={isLoading || !!error}
       menuIsOpen={isMenuOpen}
     />

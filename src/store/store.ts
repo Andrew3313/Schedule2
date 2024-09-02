@@ -14,9 +14,8 @@ export const useStore = create<IStore>()(
         dayEn: "",
         presentDay: "",
         currentWeek: "",
+        darkTheme: true,
         loading: false,
-        isOpenDepartment: false,
-        isOpenGroup: false,
         setFaculty: (faculty) =>
           set((state) => ({
             ...state,
@@ -62,15 +61,10 @@ export const useStore = create<IStore>()(
             ...state,
             currentWeek,
           })),
-        setIsOpenDepartment: (isOpenDepartment) =>
+        setDarkTheme: () =>
           set((state) => ({
             ...state,
-            isOpenDepartment,
-          })),
-        setIsOpenGroup: (isOpenGroup) =>
-          set((state) => ({
-            ...state,
-            isOpenGroup,
+            darkTheme: !state.darkTheme,
           })),
       }),
       {

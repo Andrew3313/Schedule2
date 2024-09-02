@@ -56,7 +56,7 @@ export const Day: React.FC<Props> = ({ day, isLoading, error, className }) => {
           "rounded-r-[1rem]": day === "Сб",
         },
         {
-          "!bg-accent": day === currentDay,
+          "!bg-accent text-white": day === currentDay,
         },
         className
       )}

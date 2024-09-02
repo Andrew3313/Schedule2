@@ -32,8 +32,8 @@ export const TopBar: React.FC = () => {
     <div className="grid grid-cols-6 grid-rows-3 gap-[.5rem] mb-[.5rem]">
       <Course className="col-span-1 " />
 
-      <DropDownDepartment className="col-span-3 " />
-      <DropDownGroup className="col-span-2 " />
+      <DropDownDepartment className="col-span-3" />
+      <DropDownGroup className="col-span-2" />
 
       {fraction.map((fraction) => (
         <ButtonFraction

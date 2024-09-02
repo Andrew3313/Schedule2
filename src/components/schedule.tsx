@@ -10,6 +10,7 @@ export const Schedule: React.FC = () => {
   const group = useStore((state) => state.group);
   const week = useStore((state) => state.week);
   const dayEn = useStore((state) => state.dayEn);
+  const darkTheme = useStore((state) => state.darkTheme);
   const setLoading = useStore((state) => state.setLoading);
   const [currentTime, setCurrentTime] = React.useState(
     moment().format("HH:mm")
@@ -62,7 +63,7 @@ export const Schedule: React.FC = () => {
               className={cn(
                 "flex items-center justify-center bg-secondary font-medium rounded-[.5rem] text-[1.5rem] w-[9rem] h-[2.3rem] mt-0 mb-[.5rem] mx-auto",
                 {
-                  "!bg-accent":
+                  "!bg-accent text-white":
                     currentPairIndex === index && currentPairIndex !== -1,
                 }
               )}
