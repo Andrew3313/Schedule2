@@ -1,7 +1,6 @@
 import React from "react";
 import Select from "react-select";
 import cn from "classnames";
-import { customStylesSelect } from "../constants/styles";
 import { useStore } from "../store/store";
 import { useGroupsByFacultyAndCourse } from "../hooks/useGroupsByFacultyAndCourse";
 
@@ -92,7 +91,7 @@ export const DropDownGroup: React.FC<Props> = ({ className }) => {
   return (
     <Select
       options={options}
-      styles={customStylesSelect}
+      classNamePrefix={"group-select"}
       isSearchable={false}
       placeholder={""}
       onChange={handleGroupChange}

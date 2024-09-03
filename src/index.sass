@@ -3,19 +3,19 @@
 @tailwind utilities
 
 :root 
-  --background: 210, 28%, 17%, 1
-  --primary: 207, 25%, 23%, 1
-  --secondary: 207, 22%, 33%, 1
-  --accent: 213, 99%, 65%, 1
-  --text-primary: 0, 0%, 100%, 1
+  --background: hsla(210, 28%, 17%, 1)
+  --primary: hsla(207, 25%, 23%, 1)
+  --secondary: hsla(207, 22%, 33%, 1)
+  --accent: hsla(213, 99%, 65%, 1)
+  --text-primary: hsla(0, 0%, 100%, 1)
   --radius: 10px
 
 .light
-  --background: 0, 0%, 90.39%, 1
-  --primary: 0, 0%, 100%, 1
-  --secondary: 0, 0%, 90.39%, 1
-  --accent: 213, 99%, 65%, 1
-  --text-primary: 0, 0%, 11.76%, 1
+  --background: hsla(0, 0%, 90.39%, 1)
+  --primary: hsla(0, 0%, 100%, 1)
+  --secondary: hsla(0, 0%, 90.39%, 1)
+  --accent: hsla(213, 99%, 65%, 1)
+  --text-primary: hsla(0, 0%, 11.76%, 1)
   --radius: 10px
 
 html 
@@ -25,7 +25,7 @@ html
 body
   font-family: "Montserrat", sans-serif
   font-weight: 300
-  background-color: hsla(var(--background))
+  background-color: var(--background)
   
 * 
   margin: 0
@@ -44,20 +44,12 @@ body
   html
     font-size: 42%
 
-  .indicator
-    width: 2.7rem 
-    height: 2.7rem
-
   .course
     height: 5.6rem !important
 
 @media (min-width: 280px)
   html
     font-size: 44%
-
-  .indicator
-    width: 2.7rem 
-    height: 2.7rem
   
   .course
     height: 5.3rem !important
@@ -66,10 +58,6 @@ body
   html
     font-size: 46%
 
-  .indicator
-    width: 2.7rem 
-    height: 2.7rem 
-
   .course
     height: 5.1rem !important
 
@@ -77,17 +65,9 @@ body
   html
     font-size: 47%
 
-  .indicator
-    width: 2.5rem 
-    height: 2.5rem 
-
 @media (min-width: 310px)
   html
     font-size: 50%
-
-  .indicator
-    width: 2.5rem 
-    height: 2.5rem 
 
   .course
     height: 5rem !important
@@ -96,65 +76,33 @@ body
   html
     font-size: 51%
 
-  .indicator
-    width: 2.5rem 
-    height: 2.5rem 
-
 @media (min-width: 330px)
   html
     font-size: 53%
-
-  .indicator
-    width: 2.5rem 
-    height: 2.5rem 
 
 @media (min-width: 340px)
   html
     font-size: 54%
 
-  .indicator
-    width: 2.5rem 
-    height: 2.5rem 
-
 @media (min-width: 350px)
   html
     font-size: 56%
-
-  .indicator
-    width: 2.5rem 
-    height: 2.5rem 
 
 @media (min-width: 360px)
   html
     font-size: 58%
 
-  .indicator
-    width: 2.3rem 
-    height: 2.3rem
-
 @media (min-width: 370px)
   html
     font-size: 59%
-
-  .indicator
-    width: 2.3rem 
-    height: 2.3rem 
 
 @media (min-width: 380px)
   html
     font-size: 61%
 
-  .indicator
-    width: 2rem 
-    height: 2rem 
-
 @media (min-width: 390px)
   html
     font-size: 62.5%
-
-  .indicator
-    width: 2rem 
-    height: 2rem 
 
 @media (min-width: 410px)
   html
@@ -173,39 +121,180 @@ button
   margin: 2rem auto
   width: 2rem
   height: 2rem
-  border: .3rem solid #4D9EFE
-  border-bottom-color: #2B3B48
+  border: .3rem solid var(--accent)
+  border-bottom-color: var(--primary)
   border-radius: 50%
   display: inline-block
   box-sizing: border-box
   animation: rotation 1s linear infinite
 
-.group div
-  // border-radius: 0 1rem 0 0 
-  background-color: hsl(var(--primary))
-  color: hsl(var(--text-primary))
+// Стили для кастомного селекта факультетов
+@keyframes scaleIn
+  0%
+    opacity: 0
+    transform: scale(0.9)
 
-.department div
-  background-color: hsl(var(--primary))
-  color: hsl(var(--text-primary))
+  50%
+    opacity: 0.3
+    
+  100%
+    opacity: 1
+    transform: scale(1)
 
-// .switch-slider::before
-//   content: ""
-//   position: absolute
-//   left: 0
-//   bottom: 0
-//   height: 1.6rem
-//   width: 1.6rem
-//   border-radius: 4rem
-//   background-color: #4D9EFE
+.department-select
+  &-container > div
+    outline: none !important
+    box-shadow: none !important
+  
+  &__control
+    display: flex !important
+    align-items: center !important
+    padding: 0 1rem !important
+    font-size: 1.5rem !important
+    background-color: var(--primary) !important
+    border: none !important
+    border-radius: 0 !important
+    border: none !important
+    box-shadow: none !important
+    height: 5rem !important
+    
+    &:hover
+      border: none !important
 
-// .switch-input:focus + .switch-slider
-//   box-shadow: 0 0 .1rem #4D9EFE
+  &__menu
+    margin-top: 0 !important
+    background-color: var(--accent) !important
+    border: none !important
+    box-shadow: none !important
+    color: white !important
+    padding: 0 !important
+    border-bottom-left-radius: 1rem !important
+    border-bottom-right-radius: 1rem !important
+    border-top-right-radius: 0 !important
+    border-top-left-radius: 0 !important
+    animation: scaleIn .15s ease-in-out
 
-// .switch-input:checked + .switch-slider
-//   background-color: #2B3B48
+  &__menu-list
+    max-height: 18rem !important
+    overflow-y: auto !important
+    -webkit-overflow-scrolling: auto !important
+    scrollbar-width: thin !important
+    scrollbar-color: white var(--accent) !important
 
-// .switch-input:checked + .switch-slider::before
-//   transform: translateX(1.4rem)
-//   -webkit-transform: translateX(1.4rem)
-//   -ms-transform: translateX(1.4rem)
+  &__option
+    cursor: pointer !important
+    display: flex !important
+    justify-content: center !important
+    color: white !important
+    padding: "1.5rem 2.3rem" !important
+    font-size: 1.5rem !important
+    font-weight: normal !important
+    cursor: "pointer" !important
+    
+    &--is-focused
+      background-color: white !important
+      color: var(--accent) !important
+
+  &__value-container
+    display: flex !important
+    font-weight: normal !important
+    align-items: center !important
+    padding: 0 1rem !important
+    cursor: pointer !important
+    font-size: 1.5rem !important
+
+  &__single-value
+    color: var(--text-primary) !important
+
+  &__indicator-separator
+    display: none !important
+
+  &__indicators
+    cursor: pointer !important
+
+  &__indicator 
+    color: var(--accent) !important
+
+    &:hover
+      color: white !important
+
+// Кастомные стили групп
+.group-select
+  &-container > div
+    outline: none !important
+    box-shadow: none !important
+  
+  &__control
+    display: flex !important
+    align-items: center !important
+    padding: 0 1rem !important
+    font-size: 1.5rem !important
+    background-color: var(--primary) !important
+    border: none !important
+    border-top-right-radius: 1rem !important 
+    border-top-left-radius: 0 !important 
+    border-bottom-right-radius: 0 !important 
+    border-bottom-right-radius: 0 !important 
+    border: none !important
+    box-shadow: none !important
+    height: 5rem !important
+    
+    &:hover
+      border: none !important
+
+  &__menu
+    margin-top: 0 !important
+    background-color: var(--accent) !important
+    border: none !important
+    box-shadow: none !important
+    color: white !important
+    padding: 0 !important
+    border-bottom-left-radius: 1rem !important
+    border-bottom-right-radius: 1rem !important
+    border-top-right-radius: 0 !important
+    border-top-left-radius: 0 !important
+    animation: scaleIn .15s ease-in-out
+
+  &__menu-list
+    max-height: 18rem !important
+    overflow-y: auto !important
+    -webkit-overflow-scrolling: auto !important
+    scrollbar-width: thin !important
+    scrollbar-color: white var(--accent) !important
+
+  &__option
+    cursor: pointer !important
+    display: flex !important
+    justify-content: center !important
+    color: white !important
+    padding: "1.5rem 2.3rem" !important
+    font-size: 1.5rem !important
+    font-weight: normal !important
+    cursor: "pointer" !important
+    
+    &--is-focused
+      background-color: white !important
+      color: var(--accent) !important
+
+  &__value-container
+    display: flex !important
+    font-weight: normal !important
+    align-items: center !important
+    padding: 0 1rem !important
+    cursor: pointer !important
+    font-size: 1.5rem !important
+
+  &__single-value
+    color: var(--text-primary) !important
+
+  &__indicator-separator
+    display: none !important
+
+  &__indicators
+    cursor: pointer !important
+
+  &__indicator 
+    color: var(--accent) !important
+
+    &:hover
+      color: white !important 

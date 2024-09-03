@@ -1,7 +1,7 @@
 import React from "react";
-import cn from "classnames";
-import Select from "react-select";
-import { customStylesSelect } from "../constants/styles";
+// import cn from "classnames";
+import Select, { OnChangeValue } from "react-select";
+// import { customStylesSelect } from "../constants/styles";
 import { useStore } from "../store/store";
 import { useFaculty } from "../hooks/useFaculty";
 
@@ -25,19 +25,18 @@ export const DropDownDepartment: React.FC<Props> = ({ className }) => {
   const { faculties, isLoading, error } = useFaculty();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const options = React.useMemo(() => {
-    return (
-      faculties
-        ?.filter((fac) => fac.toLocaleUpperCase() !== faculty)
-        .map((faculty) => ({
-          value: faculty.toLocaleUpperCase(),
-          label: faculty.toLocaleUpperCase(),
-        })) || []
-    );
-  }, [faculties, faculty]);
+  const options =
+    faculties
+      ?.filter((fac) => fac.toLocaleUpperCase() !== faculty)
+      .map((faculty) => ({
+        value: faculty.toLocaleUpperCase(),
+        label: faculty.toLocaleUpperCase(),
+      })) || [];
 
-  const handleFacultyChange = (selectedOption: FacultyOption) => {
-    setFaculty(selectedOption.value);
+  const handleFacultyChange = (
+    newValue: OnChangeValue<FacultyOption, false>
+  ) => {
+    setFaculty((newValue as FacultyOption).value);
     setIsMenuOpen(false);
   };
 
@@ -55,20 +54,30 @@ export const DropDownDepartment: React.FC<Props> = ({ className }) => {
   return (
     <Select
       options={options}
-      styles={customStylesSelect}
+      classNamePrefix="department-select"
       isSearchable={false}
       placeholder={""}
       onChange={handleFacultyChange}
-      value={isLoading || !!error ? null : optionsValue}
+      value={optionsValue}
+      className={className}
+      isDisabled={isLoading || !!error}
       onMenuOpen={() => {
         setIsMenuOpen(true);
       }}
       onMenuClose={() => {
         setIsMenuOpen(false);
       }}
-      className={cn(className, "department")}
-      isDisabled={isLoading || !!error}
       menuIsOpen={isMenuOpen}
     />
   );
 };
+
+// onMenuOpen={() => {
+//   setIsMenuOpen(true);
+// }}
+// onMenuClose={() => {
+//   setIsMenuOpen(false);
+// }}
+// isLoading={isLoading || !!error}
+
+// menuIsOpen={isMenuOpen}

@@ -35,7 +35,7 @@ export const Main: React.FC = () => {
 
   return (
     <Container>
-      <div className="min-h-[calc(100vh-12rem)]">
+      <div className="min-h-[calc(100vh-13rem)]">
         <Header />
         <Schedule />
       </div>

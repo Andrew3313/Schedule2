@@ -36,6 +36,7 @@ export const customStylesSelect: StylesConfig<any> = {
     borderRadius: "none",
     border: "none",
     boxShadow: "none",
+    // backgroundColor: "#4C9BF8",
     padding: "0",
   }),
   menuList: (provided) => ({
@@ -47,7 +48,8 @@ export const customStylesSelect: StylesConfig<any> = {
     padding: 0,
     margin: 0,
     borderRadius: "none",
-    borderBottom: ".5rem solid #EDEBEB",
+    // backgroundColor: "#4C9BF8",
+    // borderBottom: ".5rem solid #EDEBEB",
   }),
   valueContainer: (provided) => ({
     ...provided,
@@ -59,7 +61,6 @@ export const customStylesSelect: StylesConfig<any> = {
     ...provided,
     display: "flex",
     justifyContent: "center",
-    backgroundColor: "#2A4D5E",
     borderRadius: "none",
     color: "white",
     padding: "1.5rem 2.3rem",
@@ -67,7 +68,7 @@ export const customStylesSelect: StylesConfig<any> = {
     fontWeight: "normal",
     cursor: "pointer",
     "&:hover": {
-      backgroundColor: "#7CC5C5",
+      backgroundColor: "#FFFFFF",
     },
   }),
   dropdownIndicator: (provided) => ({
