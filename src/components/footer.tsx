@@ -3,7 +3,7 @@ import { useStore } from "../store/store";
 
 export const Footer: React.FC = () => {
   const loading = useStore((state) => state.loading);
-  const setDarkTheme = useStore((state) => state.setDarkTheme);
+  // const setDarkTheme = useStore((state) => state.setDarkTheme);
   return (
     <>
       {!loading && (
