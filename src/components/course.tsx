@@ -25,15 +25,17 @@ export const Course: React.FC<Props> = ({ className }) => {
   };
 
   React.useEffect(() => {
-    setSelectedCourse(1);
-  }, [faculty]);
+    if (courses && !courses?.includes(selectedCourse)) {
+      setSelectedCourse(1);
+    }
+  }, [faculty, courses]);
 
   return (
     <button
       onClick={handleCourseChange}
       disabled={isLoading || !courses || !!error}
       className={cn(
-        "course text-[2rem] cursor-pointer border-none bg-primary w-[5.5rem] h-[5rem] rounded-tl-[1rem]", 
+        "course text-[2rem] cursor-pointer border-none bg-primary w-[5.5rem] h-[5rem] rounded-tl-[1rem]",
         className,
         isLoading && "cursor-not-allowed"
       )}

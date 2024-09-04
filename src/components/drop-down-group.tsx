@@ -38,26 +38,20 @@ export const DropDownGroup: React.FC<Props> = ({ className }) => {
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const options = React.useMemo(() => {
-    return (
-      groups
-        ?.filter((groupItem) => groupItem !== group)
-        .map((groupItem) => ({
-          value: groupItem.toLocaleUpperCase(),
-          label: groupItem.toLocaleUpperCase(),
-        })) || [] 
-    );
-  }, [groups, group]);
+  const options =
+    groups
+      ?.filter((groupItem) => groupItem !== group)
+      .map((groupItem) => ({
+        value: groupItem.toLocaleUpperCase(),
+        label: groupItem.toLocaleUpperCase(),
+      })) || [];
 
-  const handleGroupChange = React.useCallback(
-    (value: GroupOption | null) => {
-      if (value) {
-        setGroup(value.value);
-        setIsMenuOpen(false);
-      }
-    },
-    [setGroup]
-  );
+  const handleGroupChange = (value: GroupOption | null) => {
+    if (value) {
+      setGroup(value.value);
+      setIsMenuOpen(false);
+    }
+  };
 
   React.useEffect(() => {
     if (groups && groups.length > 0) {
@@ -75,7 +69,7 @@ export const DropDownGroup: React.FC<Props> = ({ className }) => {
         setGroup(groups[0]);
       }
     }
-  }, [groups, setGroup]);
+  }, [groups]);
 
   React.useEffect(() => {
     if (group) {
@@ -103,8 +97,11 @@ export const DropDownGroup: React.FC<Props> = ({ className }) => {
         setIsMenuOpen(false);
       }}
       className={cn(className, "group")}
-      isDisabled={!faculty || isLoading || !groups || !!error} 
+      isDisabled={!faculty || isLoading || !groups || !!error}
       menuIsOpen={isMenuOpen}
+      noOptionsMessage={() => (
+        <span style={{ color: "white", fontSize: "1.5rem" }}>Больше нет групп</span>
+      )}
     />
   );
 };
