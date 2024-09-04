@@ -24,6 +24,10 @@ export const Course: React.FC<Props> = ({ className }) => {
     }
   };
 
+  React.useEffect(() => {
+    setSelectedCourse(1);
+  }, [faculty]);
+
   return (
     <button
       onClick={handleCourseChange}
