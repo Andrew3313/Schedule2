@@ -4,8 +4,8 @@ import { initSwipeBehavior, retrieveLaunchParams } from "@telegram-apps/sdk";
 import { scheduleService } from "../services/schedule.service";
 
 export const useTelegramWebApp = () => {
-  const root = document.querySelector(":root");
-  const setDarkTheme = useStore((state) => state.setDarkTheme);
+  // const root = document.querySelector(":root");
+  // const setDarkTheme = useStore((state) => state.setDarkTheme);
   const setGroupAuth = useStore((state) => state.setGroupAuth);
 
   React.useLayoutEffect(() => {
@@ -28,11 +28,11 @@ export const useTelegramWebApp = () => {
         window.Telegram.WebApp.expand();
         swipeBehavior.disableVerticalSwipe();
 
-        const theme = window.Telegram.WebApp.themeParams;
-        if (!(theme?.bg_color === "#ffffff")) {
-          root?.classList.add("dark");
-          setDarkTheme();
-        }
+        // const theme = window.Telegram.WebApp.themeParams;
+        // if (!(theme?.bg_color === "#ffffff")) {
+        //   root?.classList.add("dark");
+        //   setDarkTheme();
+        // }
       } catch (error) {
         console.log("Error initializing Telegram Web App:", error);
       }

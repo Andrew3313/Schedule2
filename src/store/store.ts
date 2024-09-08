@@ -16,7 +16,7 @@ export const useStore = create<IStore>()(
         presentDay: "",
         currentWeek: "",
         loading: false,
-        darkTheme: true,
+        // darkTheme: true,
         setFaculty: (faculty) =>
           set((state) => ({
             ...state,
@@ -62,11 +62,11 @@ export const useStore = create<IStore>()(
             ...state,
             currentWeek,
           })),
-        setDarkTheme: () =>
-          set((state) => ({
-            ...state,
-            darkTheme: !state.darkTheme,
-          })),
+        // setDarkTheme: () =>
+        //   set((state) => ({
+        //     ...state,
+        //     darkTheme: !state.darkTheme,
+        //   })),
         setGroupAuth: (groupAuth) =>
           set((state) => ({
             ...state,
