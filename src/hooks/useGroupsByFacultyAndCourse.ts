@@ -6,12 +6,6 @@ export const useGroupsByFacultyAndCourse = (
   faculty: string,
   course: number
 ) => {
-  if (!faculty || !course)
-    return {
-      groups: undefined,
-      isLoading: false,
-      error: null,
-    };
   const { data, isLoading, error } = useQuery({
     queryKey: ["groups", faculty, course],
     queryFn: () =>
@@ -20,14 +14,14 @@ export const useGroupsByFacultyAndCourse = (
         course
       ),
     select: (data) => data.data.groups,
-    enabled: !!faculty || !!course,
+    enabled: !!faculty && !!course,
     refetchOnWindowFocus: false,
     staleTime: hoursToMilliseconds(24),
   });
 
   return {
     groups: data,
-    isLoading,
-    error,
+    isLoadingDDG: isLoading,
+    errorDDG: error,
   };
 };

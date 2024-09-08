@@ -5,13 +5,13 @@ export const useScheduleByGroup = (group: string) => {
   const { data, isLoading, error, isSuccess } = useQuery({
     queryKey: ["schedule", group],
     queryFn: () => scheduleService.getScheduleByGroup(group),
-    select: (data) => data.data.schedule,
-    enabled: !!group,
+    select: (data) => data.data,
+    enabled: !!group, 
     refetchOnWindowFocus: false,
   });
 
   return {
-    schedule: data,
+    data,
     isLoading,
     error,
     isSuccess,

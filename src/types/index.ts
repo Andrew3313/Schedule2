@@ -15,13 +15,20 @@ export interface ThemeParams {
 export interface TelegramWebApp {
   ready: () => void;
   expand: () => void;
+  initDataUnsafe: {
+    user: {
+      id: number;
+      first_name: string;
+    };
+  };
   themeParams: ThemeParams;
 }
 
 export interface IStore {
   selectedCourse: number;
   faculty: string;
-  group: string | null;
+  group: string;
+  groupAuth: string;
   week: string;
   day: string;
   dayEn: string;
@@ -39,6 +46,7 @@ export interface IStore {
   setPresentDay: (today: string) => void;
   setCurrentWeek: (currentWeek: string) => void;
   setDarkTheme: () => void;
+  setGroupAuth: (groupAuth: string) => void;
 }
 
 export interface IFaculties {
@@ -73,15 +81,15 @@ export interface ISchedule {
 }
 
 export interface IDays {
-  monday: Pair[];
-  tuesday: Pair[];
-  wednesday: Pair[];
-  thursday: Pair[];
-  friday: Pair[];
-  saturday: Pair[];
+  monday: IPair[];
+  tuesday: IPair[];
+  wednesday: IPair[];
+  thursday: IPair[];
+  friday: IPair[];
+  saturday: IPair[];
 }
 
-export interface Pair {
+export interface IPair {
   time: string;
   lesson: string;
 }
@@ -90,4 +98,17 @@ export interface ICurrentDay {
   week_type: string;
   day: string;
   day_ru: string;
+}
+
+export interface IGetUser {
+  id: number;
+  telegram_id: number;
+  telegram_username: string;
+  group: string | null;
+  notification_sound: boolean;
+}
+
+export interface IFacultyAndCourseByGroup {
+  faculty: string;
+  course: number;
 }

@@ -1,43 +1,36 @@
 import React from "react";
-import { initSwipeBehavior } from "@telegram-apps/sdk";
 import { Container, Footer, Header, Schedule } from "./components";
-import { TelegramWebApp } from "./types";
+import { useTelegramWebApp } from "./hooks/useTelegramWebApp";
+import { useScheduleByGroup } from "./hooks/useScheduleByGroup";
 import { useStore } from "./store/store";
 
 export const Main: React.FC = () => {
-  const root = document.querySelector(":root");
-  const setDarkTheme = useStore((state) => state.setDarkTheme);
+  const groupAuth = useStore((state) => state.groupAuth);
+  const group = useStore((state) => state.group);
+  useTelegramWebApp();
+  const setGroup = useStore((state) => state.setGroup);
+  const setSelectedCourse = useStore((state) => state.setSelectedCourse);
+  const setFaculty = useStore((state) => state.setFaculty);
+  const setGroupAuth = useStore((state) => state.setGroupAuth);
+
+  const { data, isLoading, isSuccess, error } = useScheduleByGroup(
+    groupAuth ? groupAuth : group ? group : ""
+  );
+
   React.useEffect(() => {
-    const telegramWebApp = window.Telegram?.WebApp as
-      | TelegramWebApp
-      | undefined;
-
-    if (telegramWebApp) {
-      try {
-        const [swipeBehavior] = initSwipeBehavior();
-        window.Telegram.WebApp.ready();
-        window.Telegram.WebApp.expand();
-        swipeBehavior.disableVerticalSwipe();
-
-        const theme = window.Telegram.WebApp.themeParams;
-
-        if (theme) {
-          if (theme.bg_color === "#ffffff" || theme.bg_color === "#F0F0F0") {
-            root?.classList.add("light");
-            setDarkTheme();
-          }
-        }
-      } catch (error) {
-        console.log("Error setting up swipe behavior:", error);
-      }
+    if (data && isSuccess) {
+      setFaculty(data.faculty)
+      setSelectedCourse(data.course)
+      setGroup(data.group)
+      setGroupAuth("");
     }
-  }, []);
+  });
 
   return (
     <Container>
       <div className="min-h-[calc(100vh-14rem)]">
         <Header />
-        <Schedule />
+        <Schedule data={data} isLoading={isLoading} isSuccess={isSuccess} error={error} />
       </div>
       <Footer />
     </Container>

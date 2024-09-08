@@ -21,7 +21,10 @@ export const Footer: React.FC = () => {
               </div>
               BackEnd
             </a>
-            <a href="https://t.me/Andrew13145" className="text-[1.3rem] font-normal">
+            <a
+              href="https://t.me/Andrew13145"
+              className="text-[1.3rem] font-normal"
+            >
               <div className="inline-block mr-[1rem]">
                 <img src="/assets/images/tg.svg" alt="tg icon" />
               </div>

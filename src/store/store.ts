@@ -7,15 +7,16 @@ export const useStore = create<IStore>()(
     persist(
       (set) => ({
         selectedCourse: 1,
-        faculty: "ФВТ",
-        group: null,
+        faculty: "",
+        group: "",
+        groupAuth: "",
         week: "",
         day: "",
         dayEn: "",
         presentDay: "",
         currentWeek: "",
-        darkTheme: true,
         loading: false,
+        darkTheme: true,
         setFaculty: (faculty) =>
           set((state) => ({
             ...state,
@@ -65,6 +66,11 @@ export const useStore = create<IStore>()(
           set((state) => ({
             ...state,
             darkTheme: !state.darkTheme,
+          })),
+        setGroupAuth: (groupAuth) =>
+          set((state) => ({
+            ...state,
+            groupAuth,
           })),
       }),
       {

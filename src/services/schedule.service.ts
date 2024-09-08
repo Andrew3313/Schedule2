@@ -3,17 +3,19 @@ import {
   ICoursesByFaculty,
   ICurrentDay,
   IFaculties,
+  IFacultyAndCourseByGroup,
+  IGetUser,
   IGroupsByCourseAndFaculty,
   IScheduleByGroup,
 } from "../types";
 
 class ScheduleService {
-  private URL = "https://api.schedule.vingp.dev/api/v1/schedule";
+  private URL1 = "https://api.schedule.vingp.dev/api/v1/schedule";
+  private URL2 = "https://user.schedule.vingp.dev/user";
 
   async getFaculties() {
     try {
-      return await axios.get<IFaculties>(`${this.URL}/faculties`);
-      // return axios.get<IFaculties>(`${this.URL}/faculties`);
+      return await axios.get<IFaculties>(`${this.URL1}/faculties`);
     } catch (error) {
       throw error;
     }
@@ -22,7 +24,7 @@ class ScheduleService {
   async getCoursesByFaculty(faculty: string) {
     try {
       return await axios.get<ICoursesByFaculty>(
-        `${this.URL}/courses?faculty=${faculty}`
+        `${this.URL1}/courses?faculty=${faculty}`
       );
     } catch (error) {
       throw error;
@@ -32,7 +34,7 @@ class ScheduleService {
   async getGroupsByCourseAndFaculty(faculty: string, course: number) {
     try {
       return await axios.get<IGroupsByCourseAndFaculty>(
-        `${this.URL}/groups?faculty=${faculty}&course=${course}`
+        `${this.URL1}/groups?faculty=${faculty}&course=${course}`
       );
     } catch (error) {
       throw error;
@@ -41,7 +43,7 @@ class ScheduleService {
 
   async getScheduleByGroup(group: string) {
     try {
-      return await axios.get<IScheduleByGroup>(`${this.URL}/groups/${group}`);
+      return await axios.get<IScheduleByGroup>(`${this.URL1}/groups/${group}`);
     } catch (error) {
       throw error;
     }
@@ -49,7 +51,37 @@ class ScheduleService {
 
   async getCurrentDay() {
     try {
-      return await axios.get<ICurrentDay>(`${this.URL}/day`);
+      return await axios.get<ICurrentDay>(`${this.URL1}/day`);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getUser(initDataRaw: string | undefined, id: number) {
+    try {
+      const response = await axios.get<IGetUser>(
+        `${this.URL2}/${id}`,
+        {
+          headers: {
+            authorization: `tma ${initDataRaw}`,
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getFacultyAndCourseByGroup(group: string | null) {
+    if (!group) return null;
+    try {
+      const response = await axios.get<IFacultyAndCourseByGroup>(
+        `${this.URL1}/groups/${group}`
+      );
+
+      return response.data;
     } catch (error) {
       throw error;
     }

@@ -30,6 +30,7 @@ body
   -webkit-user-select: none
   -moz-user-select: none
   -ms-user-select: none
+  scrollbar-width: none
   
 * 
   margin: 0
@@ -37,8 +38,7 @@ body
   box-sizing: border-box
 
 ::-webkit-scrollbar
-  width: 0
-  height: 0
+  display: none
 
 @media screen and (prefers-reduced-motion: reduce) 
   html 
@@ -149,6 +149,9 @@ button
   &-container > div
     outline: none !important
     box-shadow: none !important
+
+  &__placeholder
+    color: var(--text-primary) !important
   
   &__control
     display: flex !important
@@ -160,6 +163,7 @@ button
     border: none !important
     box-shadow: none !important
     height: 5rem !important
+    padding-left: 1rem !important
     
     &:hover
       border: none !important
@@ -178,11 +182,9 @@ button
     animation: scaleIn .15s ease-in-out
 
   &__menu-list
-    max-height: 18rem !important
+    max-height: 21rem !important
     overflow-y: auto !important
-    -webkit-overflow-scrolling: auto !important
-    scrollbar-width: thin !important
-    scrollbar-color: white var(--accent) !important
+    -webkit-overflow-scrolling: touch !important
 
   &__option
     cursor: pointer !important
@@ -193,6 +195,7 @@ button
     font-size: 1.5rem !important
     font-weight: normal !important
     cursor: "pointer" !important
+    border-bottom: .1rem solid #FFFFFF19 !important
     
     &--is-focused
       background-color: var(--accent) !important
@@ -200,14 +203,14 @@ button
     &:hover
       background-color: white !important
       color: var(--accent) !important
+      border-radius: .5rem !important
 
   &__value-container
-    display: flex !important
     font-weight: normal !important
-    align-items: center !important
     padding: 0 1rem !important
     cursor: pointer !important
     font-size: 1.5rem !important
+    padding: 0 !important
 
   &__single-value
     color: var(--text-primary) !important
@@ -229,6 +232,9 @@ button
   &-container > div
     outline: none !important
     box-shadow: none !important
+
+  &__placeholder
+    color: var(--text-primary) !important
   
   &__control
     display: flex !important
@@ -243,6 +249,7 @@ button
     border: none !important
     box-shadow: none !important
     height: 5rem !important
+    padding-left: 1rem !important
     
     &:hover
       border: none !important
@@ -264,9 +271,9 @@ button
     max-height: 28rem !important
     overflow-y: auto !important
     -webkit-overflow-scrolling: touch !important
-    scrollbar-width: thin !important
-    scrollbar-color: white var(--accent) !important
-    touch-action: pan-y !important
+
+    &::-webkit-scrollbar
+      display: none
 
   &__option
     cursor: pointer !important
@@ -277,6 +284,7 @@ button
     font-size: 1.5rem !important
     font-weight: normal !important
     cursor: "pointer" !important
+    border-bottom: .1rem solid #FFFFFF19 !important
     
     &--is-focused
       background-color: var(--accent) !important
@@ -284,14 +292,14 @@ button
     &:hover
       background-color: white !important
       color: var(--accent) !important
+      border-radius: .5rem !important
 
   &__value-container
-    display: flex !important
     font-weight: normal !important
-    align-items: center !important
     padding: 0 1rem !important
     cursor: pointer !important
     font-size: 1.5rem !important
+    padding: 0 !important
 
   &__single-value
     color: var(--text-primary) !important

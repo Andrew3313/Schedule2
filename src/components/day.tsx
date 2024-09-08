@@ -2,14 +2,14 @@ import React from "react";
 import cn from "classnames";
 import { useStore } from "../store/store";
 
-interface Props {
+interface IProps {
   day: string;
   className: string;
   isLoading: boolean;
   error: null | Error;
 }
 
-export const Day: React.FC<Props> = ({ day, isLoading, error, className }) => {
+export const Day: React.FC<IProps> = ({ day, isLoading, error, className }) => {
   const currentDay = useStore((state) => state.day);
   const setCurrentDay = useStore((state) => state.setDay);
   const setCurrentDayEn = useStore((state) => state.setDayEn);

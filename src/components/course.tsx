@@ -1,18 +1,23 @@
 import React from "react";
 import cn from "classnames";
 import { useStore } from "../store/store";
-import { useCoursesByFaculty } from "../hooks/useCoursesByFaculty";
 
-interface Props {
+interface IProps {
   className: string;
+  courses: number[] | undefined;
+  isLoading: boolean;
+  error: null | Error;
 }
 
-export const Course: React.FC<Props> = ({ className }) => {
+export const Course: React.FC<IProps> = ({
+  courses,
+  isLoading,
+  error,
+  className,
+}) => {
   const selectedCourse = useStore((state) => state.selectedCourse);
   const setSelectedCourse = useStore((state) => state.setSelectedCourse);
   const faculty = useStore((state) => state.faculty);
-
-  const { courses, isLoading, error } = useCoursesByFaculty(faculty);
 
   const handleCourseChange = () => {
     if (courses) {
@@ -33,9 +38,12 @@ export const Course: React.FC<Props> = ({ className }) => {
   return (
     <button
       onClick={handleCourseChange}
-      disabled={isLoading || !courses || !!error}
+      disabled={isLoading || !courses || !!error || !faculty}
       className={cn(
         "course text-[2rem] cursor-pointer border-none bg-primary w-[5.5rem] h-[5rem] rounded-tl-[1rem]",
+        {
+          "!cursor-default": isLoading || !courses || !!error || !faculty,
+        },
         className,
         isLoading && "cursor-not-allowed"
       )}

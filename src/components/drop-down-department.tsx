@@ -1,83 +1,63 @@
 import React from "react";
-// import cn from "classnames";
 import Select, { OnChangeValue } from "react-select";
-// import { customStylesSelect } from "../constants/styles";
 import { useStore } from "../store/store";
 import { useFaculty } from "../hooks/useFaculty";
 
-interface Props {
+interface IProps {
   className: string;
 }
 
-interface FacultyOption {
+interface IFacultyOption {
   value: string;
   label: string;
   isDisabled?: boolean;
 }
 
-export const DropDownDepartment: React.FC<Props> = ({ className }) => {
+export const DropDownDepartment: React.FC<IProps> = ({ className }) => {
+  const { faculties, isLoading, error } = useFaculty();
   const faculty = useStore((state) => state.faculty);
   const setFaculty = useStore((state) => state.setFaculty);
-  const [optionsValue, setOptionsValue] = React.useState<FacultyOption | null>(
+  const [optionsValue, setOptionsValue] = React.useState<IFacultyOption | null>(
     null
   );
-
-  const { faculties, isLoading, error } = useFaculty();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const options =
-    faculties
-      ?.filter((fac) => fac.toLocaleUpperCase() !== faculty)
-      .map((faculty) => ({
-        value: faculty.toLocaleUpperCase(),
-        label: faculty.toLocaleUpperCase(),
-      })) || [];
+    faculties?.map((fac) => ({
+      value: fac.toUpperCase(),
+      label: fac.toUpperCase(),
+    })) || [];
 
   const handleFacultyChange = (
-    newValue: OnChangeValue<FacultyOption, false>
+    newValue: OnChangeValue<IFacultyOption, false>
   ) => {
-    setFaculty((newValue as FacultyOption).value);
-    setIsMenuOpen(false);
+    if (newValue) {
+      setFaculty((newValue as IFacultyOption).value.toLowerCase());
+      setIsMenuOpen(false);
+    }
   };
 
   React.useEffect(() => {
-    if (faculty) {
-      setOptionsValue({
-        value: faculty,
-        label: faculty,
-      });
-    } else {
-      setOptionsValue(null);
-    }
+    setOptionsValue(
+      faculty
+        ? { value: faculty.toUpperCase(), label: faculty.toUpperCase() }
+        : null
+    );
   }, [faculty]);
 
   return (
     <Select
-      options={options}
+      options={options.filter((fac) => fac.value !== optionsValue?.value)}
       classNamePrefix="department-select"
       isSearchable={false}
-      placeholder={""}
+      placeholder="ФАКУЛЬТЕТ"
       onChange={handleFacultyChange}
       value={optionsValue}
       className={className}
       isDisabled={isLoading || !!error}
-      onMenuOpen={() => {
-        setIsMenuOpen(true);
-      }}
-      onMenuClose={() => {
-        setIsMenuOpen(false);
-      }}
+      onMenuOpen={() => setIsMenuOpen(true)}
+      onMenuClose={() => setIsMenuOpen(false)}
       menuIsOpen={isMenuOpen}
     />
   );
 };
-
-// onMenuOpen={() => {
-//   setIsMenuOpen(true);
-// }}
-// onMenuClose={() => {
-//   setIsMenuOpen(false);
-// }}
-// isLoading={isLoading || !!error}
-
-// menuIsOpen={isMenuOpen}

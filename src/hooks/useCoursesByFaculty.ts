@@ -15,7 +15,7 @@ export const useCoursesByFaculty = (faculty: string) => {
 
   return {
     courses: data,
-    isLoading,
-    error,
+    isLoadingCourses: isLoading,
+    errorCourses: error,
   };
 };

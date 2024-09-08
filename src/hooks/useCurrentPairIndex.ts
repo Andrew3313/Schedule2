@@ -1,8 +1,8 @@
 import moment from "moment";
-import { Pair } from "../types";
+import { IPair } from "../types";
 import { useStore } from "../store/store";
 
-export const useCurrentPairIndex = (schedule: Pair[], currentTime: string) => {
+export const useCurrentPairIndex = (schedule: IPair[], currentTime: string) => {
   const dayEn = useStore((state) => state.dayEn);
   const currentWeek = useStore((state) => state.currentWeek);
   const week = useStore((state) => state.week);

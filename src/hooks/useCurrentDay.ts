@@ -11,7 +11,7 @@ export const useCurrentDay = () => {
 
   return {
     currentDayAPI: data,
-    isLoading,
-    error,
+    isLoadingDay: isLoading,
+    errorDay: error,
   };
 };

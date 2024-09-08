@@ -1,20 +1,21 @@
-import React from "react";
-import Select from "react-select";
+import React, { useEffect } from "react";
 import cn from "classnames";
+import Select from "react-select";
 import { useStore } from "../store/store";
-import { useGroupsByFacultyAndCourse } from "../hooks/useGroupsByFacultyAndCourse";
 
-interface Props {
+interface IProps {
   className: string;
+  isLoading: boolean;
+  error: null | Error;
+  groups: string[] | undefined;
 }
 
-interface GroupOption {
+interface IGroupOption {
   value: string;
   label: string;
-  isDisabled?: boolean;
 }
 
-interface StoredGroup {
+interface IStoredGroup {
   state: {
     faculty: string;
     selectedCourse: number;
@@ -23,84 +24,99 @@ interface StoredGroup {
   version: number;
 }
 
-export const DropDownGroup: React.FC<Props> = ({ className }) => {
-  const [optionsValue, setOptionsValue] = React.useState<GroupOption | null>(
+export const DropDownGroup: React.FC<IProps> = ({
+  groups,
+  isLoading,
+  error,
+  className,
+}) => {
+  const [optionsValue, setOptionsValue] = React.useState<IGroupOption | null>(
     null
   );
   const group = useStore((state) => state.group);
   const setGroup = useStore((state) => state.setGroup);
+  const groupAuth = useStore((state) => state.groupAuth);
   const faculty = useStore((state) => state.faculty);
   const selectedCourse = useStore((state) => state.selectedCourse);
-  const { groups, isLoading, error } = useGroupsByFacultyAndCourse(
-    faculty,
-    selectedCourse
-  );
+  const isFirstRender = React.useRef<boolean>(true);
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const options =
     groups
-      ?.filter((groupItem) => groupItem !== group)
+      ?.filter((groupItem) => groupItem.toUpperCase() !== group)
       .map((groupItem) => ({
-        value: groupItem.toLocaleUpperCase(),
-        label: groupItem.toLocaleUpperCase(),
+        value: groupItem.toUpperCase(),
+        label: groupItem.toUpperCase(),
       })) || [];
 
-  const handleGroupChange = (value: GroupOption | null) => {
+  const handleGroupChange = (value: IGroupOption | null) => {
     if (value) {
       setGroup(value.value);
       setIsMenuOpen(false);
     }
   };
 
-  React.useEffect(() => {
-    if (groups && groups.length > 0) {
+  useEffect(() => {
+    if (!groupAuth) {
       const storedGroup = localStorage.getItem("schedule-storage");
       if (storedGroup) {
-        const parsedStoredGroup = JSON.parse(storedGroup) as StoredGroup;
+        const parsedStoredGroup = JSON.parse(storedGroup) as IStoredGroup;
         const storedGroupValue = parsedStoredGroup.state.group;
-
-        if (groups.includes(storedGroupValue)) {
-          setGroup(storedGroupValue);
-        } else {
-          setGroup(groups[0]);
+        if (storedGroupValue) {
+          setGroup(storedGroupValue.toUpperCase());
+          setOptionsValue({
+            value: storedGroupValue.toUpperCase(),
+            label: storedGroupValue.toUpperCase(),
+          });
         }
-      } else {
-        setGroup(groups[0]);
       }
     }
-  }, [groups]);
+  }, [groupAuth, setGroup]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (group) {
       setOptionsValue({
-        value: group,
-        label: group,
+        value: group.toUpperCase(),
+        label: group.toUpperCase(),
       });
     } else {
       setOptionsValue(null);
     }
   }, [group]);
 
+  useEffect(() => {
+    if (!isFirstRender.current) {
+      if (!group) {
+        setOptionsValue(null);
+      }
+      setGroup("");
+    } else {
+      isFirstRender.current = false;
+    }
+  }, [faculty, selectedCourse]);
+
+  const isDisabled = isLoading || !!error || !faculty || !groups;
+
   return (
     <Select
       options={options}
       classNamePrefix={"group-select"}
       isSearchable={false}
-      placeholder={""}
+      placeholder={"ГРУППА"}
       onChange={handleGroupChange}
       value={optionsValue}
-      onMenuOpen={() => {
-        setIsMenuOpen(true);
-      }}
-      onMenuClose={() => {
-        setIsMenuOpen(false);
-      }}
-      className={cn(className, "group")}
-      isDisabled={!faculty || isLoading || !groups || !!error}
+      onMenuOpen={() => setIsMenuOpen(true)}
+      onMenuClose={() => setIsMenuOpen(false)}
+      className={cn(className, "group", {
+        "!cursor-not-allowed": isDisabled,
+      })}
+      isDisabled={isDisabled}
       menuIsOpen={isMenuOpen}
       noOptionsMessage={() => (
-        <span style={{ color: "white", fontSize: "1.5rem" }}>Больше нет групп</span>
+        <span style={{ color: "white", fontSize: "1.5rem" }}>
+          Больше нет групп
+        </span>
       )}
     />
   );

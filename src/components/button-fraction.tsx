@@ -2,18 +2,16 @@ import React from "react";
 import cn from "classnames";
 import { useStore } from "../store/store";
 
-interface Props {
+interface IProps {
   fraction: string;
   className: string;
   isLoading: boolean;
-  error: null | Error;
 }
 
-export const ButtonFraction: React.FC<Props> = ({
+export const ButtonFraction: React.FC<IProps> = ({
   fraction,
   className,
   isLoading,
-  error,
 }) => {
   const week = useStore((state) => state.week);
   const setWeek = useStore((state) => state.setWeek);
@@ -35,7 +33,7 @@ export const ButtonFraction: React.FC<Props> = ({
         },
         className
       )}
-      disabled={isLoading || !!error}
+      disabled={isLoading}
     >
       {isLoading ? "" : fraction}
     </button>

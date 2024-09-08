@@ -1,11 +1,11 @@
-import cn from "classnames";
 import React from "react";
+import cn from "classnames";
 
-interface Props {
+interface IProps {
   className?: string;
 }
 
-export const Container: React.FC<React.PropsWithChildren<Props>> = ({
+export const Container: React.FC<React.PropsWithChildren<IProps>> = ({
   className,
   children,
 }) => {
