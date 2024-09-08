@@ -40,7 +40,7 @@ export const TopBar: React.FC = () => {
       setCurrentWeek(currentDayAPI.week_type.toLocaleUpperCase());
       setCurrentDayEn(currentDayAPI.day);
     }
-  }, [currentDayAPI]);
+  }, [currentDayAPI, isLoadingDay]);
 
   return (
     <div className="grid grid-cols-6 grid-rows-3 gap-[.5rem] mb-[.5rem]">

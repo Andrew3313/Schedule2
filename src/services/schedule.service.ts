@@ -3,7 +3,6 @@ import {
   ICoursesByFaculty,
   ICurrentDay,
   IFaculties,
-  IFacultyAndCourseByGroup,
   IGetUser,
   IGroupsByCourseAndFaculty,
   IScheduleByGroup,
@@ -66,19 +65,6 @@ class ScheduleService {
             authorization: `tma ${initDataRaw}`,
           },
         }
-      );
-
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async getFacultyAndCourseByGroup(group: string | null) {
-    if (!group) return null;
-    try {
-      const response = await axios.get<IFacultyAndCourseByGroup>(
-        `${this.URL1}/groups/${group}`
       );
 
       return response.data;

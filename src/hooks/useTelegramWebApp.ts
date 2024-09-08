@@ -8,7 +8,7 @@ export const useTelegramWebApp = () => {
   const setDarkTheme = useStore((state) => state.setDarkTheme);
   const setGroupAuth = useStore((state) => state.setGroupAuth);
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     const initializeTelegramWebApp = async () => {
       const telegramWebApp = window.Telegram?.WebApp;
 
@@ -29,8 +29,8 @@ export const useTelegramWebApp = () => {
         swipeBehavior.disableVerticalSwipe();
 
         const theme = window.Telegram.WebApp.themeParams;
-        if (theme?.bg_color === "#ffffff" || theme?.bg_color === "#F0F0F0") {
-          root?.classList.add("light");
+        if (!(theme?.bg_color === "#ffffff")) {
+          root?.classList.add("dark");
           setDarkTheme();
         }
       } catch (error) {

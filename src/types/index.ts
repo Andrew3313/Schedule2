@@ -107,8 +107,3 @@ export interface IGetUser {
   group: string | null;
   notification_sound: boolean;
 }
-
-export interface IFacultyAndCourseByGroup {
-  faculty: string;
-  course: number;
-}

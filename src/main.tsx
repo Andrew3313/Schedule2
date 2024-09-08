@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Footer, Header, Schedule } from "./components";
+import { Container, Footer, Header, Schedule, Spinner } from "./components";
 import { useTelegramWebApp } from "./hooks/useTelegramWebApp";
 import { useScheduleByGroup } from "./hooks/useScheduleByGroup";
 import { useStore } from "./store/store";
@@ -17,20 +17,41 @@ export const Main: React.FC = () => {
     groupAuth ? groupAuth : group ? group : ""
   );
 
+  const [showLoader, setShowLoader] = React.useState(true);
+
   React.useEffect(() => {
     if (data && isSuccess) {
-      setFaculty(data.faculty)
-      setSelectedCourse(data.course)
-      setGroup(data.group)
+      setFaculty(data.faculty);
+      setSelectedCourse(data.course);
+      setGroup(data.group);
       setGroupAuth("");
     }
   });
 
+  React.useEffect(() => {
+    if (isLoading) {
+      setShowLoader(true);
+      const timer = setTimeout(() => {
+        setShowLoader(false);
+      }, 1500);
+
+      return () => clearTimeout(timer);
+    } else {
+      setShowLoader(false);
+    }
+  }, []);
+
   return (
     <Container>
+      {showLoader && <Spinner />}
       <div className="min-h-[calc(100vh-14rem)]">
         <Header />
-        <Schedule data={data} isLoading={isLoading} isSuccess={isSuccess} error={error} />
+        <Schedule
+          data={data}
+          isLoading={isLoading}
+          isSuccess={isSuccess}
+          error={error}
+        />
       </div>
       <Footer />
     </Container>
