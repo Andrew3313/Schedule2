@@ -71,7 +71,7 @@ export const Schedule: React.FC<IProps> = ({
       )}
       {isLoading ? (
         <div className="loader" />
-      ) : currentSchedule.length > 0 ? (
+      ) : currentSchedule.length > 0 && group && faculty ? (
         currentSchedule.map((pair, index) => (
           <div
             className={cn(
