@@ -32,6 +32,8 @@ export const Schedule: React.FC<IProps> = ({
   const fraction: keyof ISchedule =
     week === "ЧИСЛИТЕЛЬ" ? "numerator" : "denominator";
 
+  const currentPairIndex = useCurrentPairIndex(currentSchedule, currentTime);
+
   React.useEffect(() => {
     setLoading(isLoading);
   }, [isLoading]);
@@ -43,8 +45,6 @@ export const Schedule: React.FC<IProps> = ({
       setCurrentSchedule(newSchedule);
     }
   }, [data, isSuccess, fraction, dayEn]);
-
-  const currentPairIndex = useCurrentPairIndex(currentSchedule, currentTime);
 
   React.useEffect(() => {
     const updateTime = () => setCurrentTime(moment().format("HH:mm"));

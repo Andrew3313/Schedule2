@@ -13,7 +13,7 @@ export const useFaculty = () => {
 
   return {
     faculties: data,
-    isLoading,
-    error,
+    isLoadingFaculties: isLoading,
+    errorFaculties: error,
   };
 };

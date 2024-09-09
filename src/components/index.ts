@@ -8,4 +8,3 @@ export { Course } from "./course";
 export { Day } from "./day";
 export { Footer } from "./footer";
 export { Schedule } from "./schedule";
-// export { Spinner } from "./spinner"

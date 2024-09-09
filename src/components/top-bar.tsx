@@ -10,6 +10,7 @@ import { useCurrentDay } from "../hooks/useCurrentDay";
 import { days, fraction } from "../constants";
 import { useCoursesByFaculty } from "../hooks/useCoursesByFaculty";
 import { useGroupsByFacultyAndCourse } from "../hooks/useGroupsByFacultyAndCourse";
+import { useFaculty } from "../hooks/useFaculty";
 
 export const TopBar: React.FC = () => {
   const setCurrentDay = useStore((state) => state.setDay);
@@ -20,6 +21,8 @@ export const TopBar: React.FC = () => {
   const selectedCourse = useStore((state) => state.selectedCourse);
   const faculty = useStore((state) => state.faculty);
   const loading = useStore((state) => state.loading);
+
+  const { faculties, isLoadingFaculties, errorFaculties } = useFaculty();
 
   const { courses, isLoadingCourses, errorCourses } = useCoursesByFaculty(
     faculty || ""
@@ -51,7 +54,12 @@ export const TopBar: React.FC = () => {
         className="col-span-1 "
       />
 
-      <DropDownDepartment className="col-span-3" />
+      <DropDownDepartment
+        faculties={faculties || []}
+        error={errorFaculties}
+        isLoading={isLoadingFaculties}
+        className="col-span-3"
+      />
 
       <DropDownGroup
         groups={groups}

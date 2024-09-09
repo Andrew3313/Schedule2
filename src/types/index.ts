@@ -35,7 +35,7 @@ export interface IStore {
   presentDay: string;
   currentWeek: string;
   loading: boolean;
-  // darkTheme: boolean;
+  theme: string;
   setSelectedCourse: (course: number) => void;
   setFaculty: (faculty: string) => void;
   setGroup: (group: string) => void;
@@ -45,7 +45,7 @@ export interface IStore {
   setDayEn: (dayEn: string) => void;
   setPresentDay: (today: string) => void;
   setCurrentWeek: (currentWeek: string) => void;
-  // setDarkTheme: () => void;
+  setTheme: (theme: string) => void;
   setGroupAuth: (groupAuth: string) => void;
 }
 

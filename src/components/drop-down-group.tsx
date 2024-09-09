@@ -34,17 +34,17 @@ export const DropDownGroup: React.FC<IProps> = ({
     null
   );
   const group = useStore((state) => state.group);
-  const setGroup = useStore((state) => state.setGroup);
   const groupAuth = useStore((state) => state.groupAuth);
   const faculty = useStore((state) => state.faculty);
   const selectedCourse = useStore((state) => state.selectedCourse);
   const isFirstRender = React.useRef<boolean>(true);
+  const setGroup = useStore((state) => state.setGroup);
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const options =
     groups
-      ?.filter((groupItem) => groupItem.toUpperCase() !== group)
+      ?.filter((groupItem) => groupItem.toLowerCase() !== group.toLowerCase())
       .map((groupItem) => ({
         value: groupItem.toUpperCase(),
         label: groupItem.toUpperCase(),
@@ -52,8 +52,9 @@ export const DropDownGroup: React.FC<IProps> = ({
 
   const handleGroupChange = (value: IGroupOption | null) => {
     if (value) {
-      setGroup(value.value);
+      setGroup(value.value.toLowerCase());
       setIsMenuOpen(false);
+      console.log(value);
     }
   };
 
@@ -64,15 +65,15 @@ export const DropDownGroup: React.FC<IProps> = ({
         const parsedStoredGroup = JSON.parse(storedGroup) as IStoredGroup;
         const storedGroupValue = parsedStoredGroup.state.group;
         if (storedGroupValue) {
-          setGroup(storedGroupValue.toUpperCase());
+          setGroup(storedGroupValue);
           setOptionsValue({
-            value: storedGroupValue.toUpperCase(),
-            label: storedGroupValue.toUpperCase(),
+            value: storedGroupValue,
+            label: storedGroupValue,
           });
         }
       }
     }
-  }, [groupAuth, setGroup]);
+  }, [groupAuth]);
 
   useEffect(() => {
     if (group) {

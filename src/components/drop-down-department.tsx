@@ -1,9 +1,12 @@
 import React from "react";
 import Select, { OnChangeValue } from "react-select";
 import { useStore } from "../store/store";
-import { useFaculty } from "../hooks/useFaculty";
+// import { useFaculty } from "../hooks/useFaculty";
 
 interface IProps {
+  faculties: string[];
+  isLoading: boolean;
+  error: null | Error;
   className: string;
 }
 
@@ -13,8 +16,8 @@ interface IFacultyOption {
   isDisabled?: boolean;
 }
 
-export const DropDownDepartment: React.FC<IProps> = ({ className }) => {
-  const { faculties, isLoading, error } = useFaculty();
+export const DropDownDepartment: React.FC<IProps> = ({ faculties, isLoading, error, className }) => {
+  // const { faculties, isLoading, error } = useFaculty();
   const faculty = useStore((state) => state.faculty);
   const setFaculty = useStore((state) => state.setFaculty);
   const [optionsValue, setOptionsValue] = React.useState<IFacultyOption | null>(
