@@ -6,7 +6,7 @@ export const useScheduleByGroup = (group: string) => {
     queryKey: ["schedule", group],
     queryFn: () => scheduleService.getScheduleByGroup(group),
     select: (data) => data.data,
-    enabled: !!group, 
+    enabled: !!group,
     refetchOnWindowFocus: false,
   });
 
