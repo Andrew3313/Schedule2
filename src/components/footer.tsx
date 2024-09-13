@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   return (
     <>
       {!loading && (
-        <footer className="mb-[2rem] opacity-40 px-[1rem] h-[8rem] pt-[1rem]">
+        <footer className="opacity-40 px-[1rem] h-[8rem] pt-[1rem]">
           <div className="flex justify-center items-center mb-[2rem]">
             <div className="w-[8.5rem] h-0 border-b-[.1rem] border-solid border-[#4C9BF8] mr-[1rem] last:mr-0" />
             <div className="text-[1.3rem] mr-[1rem] font-normal">
@@ -36,11 +36,6 @@ export const Footer: React.FC = () => {
               </div>
               Design
             </a>
-          </div>
-          <div className="flex justify-center items-center mt-[2rem]">
-            <h3 className="text-[1.3rem] font-normal">
-              Designer в активном поиске !!!
-            </h3>
           </div>
         </footer>
       )}
