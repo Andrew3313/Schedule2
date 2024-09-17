@@ -46,7 +46,7 @@ export const TopBar: React.FC = () => {
   }, [currentDayAPI, isLoadingDay]);
 
   return (
-    <div className="grid grid-cols-6 grid-rows-3 gap-[.5rem] mb-[.5rem]">
+    <header className="grid grid-cols-6 grid-rows-3 gap-[.5rem] mb-[.5rem]">
       <Course
         courses={courses}
         isLoading={isLoadingCourses}
@@ -89,6 +89,6 @@ export const TopBar: React.FC = () => {
           error={errorDay}
         />
       ))}
-    </div>
+    </header>
   );
 };

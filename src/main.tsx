@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Footer, Header, Schedule } from "./components";
+import { Container, Footer, Schedule, TopBar } from "./components";
 import { useTelegramWebApp } from "./hooks/useTelegramWebApp";
 import { useStore } from "./store/store";
 import { useScheduleByGroup } from "./hooks/useScheduleByGroup";
@@ -18,18 +18,18 @@ export const Main: React.FC = () => {
   );
 
   React.useEffect(() => {
-    if (data && isSuccess) {
-      setFaculty(data.faculty);
-      setSelectedCourse(data.course);
-      setGroup(data.group);
-      setGroupAuth("");
-    }
+  if (data && isSuccess) {
+    setFaculty(data.faculty);
+    setSelectedCourse(data.course);
+    setGroup(data.group);
+    setGroupAuth("");
+  }
   });
 
   return (
     <Container>
-      <div className="min-h-[calc(100vh-10rem)]">
-        <Header />
+      <div className="min-h-[calc(100vh-11rem)]">
+        <TopBar />
         <Schedule
           data={data}
           isLoading={isLoading}

@@ -1,5 +1,4 @@
 export { Container } from "./container";
-export { Header } from "./header";
 export { TopBar } from "./top-bar";
 export { ButtonFraction } from "./button-fraction";
 export { DropDownDepartment } from "./drop-down-department";

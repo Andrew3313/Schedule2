@@ -3,14 +3,6 @@ import type { Config } from "tailwindcss";
 const config = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    screens: {
-      xs: "320px",
-      sm: "480px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
-    },
     extend: {
       colors: {
         background: "var(--background)",

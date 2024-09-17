@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { IStore } from "../types";
+import { IStore } from "../types/types";
 
 export const useStore = create<IStore>()(
   devtools(

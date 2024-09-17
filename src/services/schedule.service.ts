@@ -6,7 +6,7 @@ import {
   IGetUser,
   IGroupsByCourseAndFaculty,
   IScheduleByGroup,
-} from "../types";
+} from "../types/types";
 
 class ScheduleService {
   private URL1 = "https://api.schedule.vingp.dev/api/v1/schedule";
@@ -58,14 +58,11 @@ class ScheduleService {
 
   async getUser(initDataRaw: string | undefined, id: number) {
     try {
-      const response = await axios.get<IGetUser>(
-        `${this.URL2}/${id}`,
-        {
-          headers: {
-            authorization: `tma ${initDataRaw}`,
-          },
-        }
-      );
+      const response = await axios.get<IGetUser>(`${this.URL2}/${id}`, {
+        headers: {
+          authorization: `tma ${initDataRaw}`,
+        },
+      });
 
       return response.data;
     } catch (error) {
