@@ -35,7 +35,7 @@ export const ButtonFraction: React.FC<IProps> = ({
       )}
       disabled={isLoading}
     >
-      {isLoading ? "" : fraction}
+      {fraction}
     </button>
   );
 };

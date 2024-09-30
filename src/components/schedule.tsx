@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import cn from "classnames";
 import { useStore } from "../store/store";
-import { IDays, ISchedule, IPair, IScheduleByGroup } from "../types/types";
+import { IDays, ISchedule, IPair, IScheduleByGroup } from "../types";
 import { useCurrentPairIndex } from "../hooks/useCurrentPairIndex";
 
 interface IProps {

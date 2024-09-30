@@ -18,12 +18,12 @@ export const Main: React.FC = () => {
   );
 
   React.useEffect(() => {
-  if (data && isSuccess) {
-    setFaculty(data.faculty);
-    setSelectedCourse(data.course);
-    setGroup(data.group);
-    setGroupAuth("");
-  }
+    if (data && isSuccess) {
+      setFaculty(data.faculty);
+      setSelectedCourse(data.course);
+      setGroup(data.group);
+      setGroupAuth("");
+    }
   });
 
   return (

@@ -63,7 +63,7 @@ export const Day: React.FC<IProps> = ({ day, isLoading, error, className }) => {
       onClick={handleDayChange}
       disabled={isLoading || !!error}
     >
-      {isLoading ? "" : day}
+      {day}
     </button>
   );
 };

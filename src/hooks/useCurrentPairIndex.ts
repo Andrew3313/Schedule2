@@ -1,5 +1,5 @@
 import moment from "moment";
-import { IPair } from "../types/types";
+import { IPair } from "../types";
 import { useStore } from "../store/store";
 
 export const useCurrentPairIndex = (schedule: IPair[], currentTime: string) => {
