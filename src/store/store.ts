@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { IStore } from "../types";
+import { IStore } from "../types/store";
 
 export const useStore = create<IStore>()(
   devtools(
@@ -16,7 +16,6 @@ export const useStore = create<IStore>()(
         presentDay: "",
         currentWeek: "",
         loading: false,
-        theme: "dark",
         setFaculty: (faculty) =>
           set((state) => ({
             ...state,
@@ -66,11 +65,6 @@ export const useStore = create<IStore>()(
           set((state) => ({
             ...state,
             groupAuth,
-          })),
-        setTheme: (theme) =>
-          set((state) => ({
-            ...state,
-            theme,
           })),
       }),
       {

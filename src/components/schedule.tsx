@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import cn from "classnames";
 import { useStore } from "../store/store";
-import { IDays, ISchedule, IPair, IScheduleByGroup } from "../types";
+import { IDays, ISchedule, IPair, IScheduleByGroup } from "../types/schedule";
 import { useCurrentPairIndex } from "../hooks/useCurrentPairIndex";
 
 interface IProps {
@@ -62,7 +62,7 @@ export const Schedule: React.FC<IProps> = ({
           </h2>
         </div>
       )}
-      {(!faculty || !group) && (
+      {((!faculty || !group) && !isLoading) && (
         <div className="flex w-full justify-center py-[1.5rem] px-[1rem] rounded-[1rem] bg-primary mb-[.5rem] no-schedule">
           <h2 className="font-normal text-[1.5rem]">
             Выберите факультет и группу

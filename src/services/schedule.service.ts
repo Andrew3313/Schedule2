@@ -3,10 +3,10 @@ import {
   ICoursesByFaculty,
   ICurrentDay,
   IFaculties,
-  IGetUser,
   IGroupsByCourseAndFaculty,
   IScheduleByGroup,
-} from "../types";
+} from "../types/schedule";
+import { IGetUser } from "../types/user";
 
 class ScheduleService {
   private URL1 = "https://api.schedule.vingp.dev/api/v1/schedule";

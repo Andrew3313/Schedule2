@@ -3,7 +3,7 @@ import { useStore } from "../store/store";
 import { initSwipeBehavior, retrieveLaunchParams } from "@telegram-apps/sdk";
 import { scheduleService } from "../services/schedule.service";
 
-export const useTelegramWebApp = () => {
+export const useInitTWA = () => {
   const setGroupAuth = useStore((state) => state.setGroupAuth);
 
   React.useEffect(() => {

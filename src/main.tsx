@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, Footer, Schedule, TopBar } from "./components";
-import { useTelegramWebApp } from "./hooks/useTelegramWebApp";
+import { useInitTWA } from "./hooks/useInitTWA";
 import { useStore } from "./store/store";
 import { useScheduleByGroup } from "./hooks/useScheduleByGroup";
 
 export const Main: React.FC = () => {
-  useTelegramWebApp();
+  useInitTWA();
   const groupAuth = useStore((state) => state.groupAuth);
   const group = useStore((state) => state.group);
   const setGroup = useStore((state) => state.setGroup);

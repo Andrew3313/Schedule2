@@ -117,12 +117,15 @@ button
   margin: 2rem auto
   width: 2rem
   height: 2rem
-  border: .3rem solid var(--accent)
-  border-bottom-color: var(--primary)
+  border: .3rem solid var(--primary)
+  border-bottom-color: var(--accent)
   border-radius: 50%
   display: inline-block
-  box-sizing: border-box
   animation: rotation 1s linear infinite
+
+@keyframes rotation
+  100%
+    transform: rotate(360deg)
 
 // Стили для кастомного селекта факультетов
 @keyframes scaleIn
@@ -216,9 +219,6 @@ button
   &__indicator 
     color: var(--accent) !important
 
-    &:hover
-      color: var(--text-primary) !important
-
 // Кастомные стили групп
 .group-select
   &-container > div
@@ -304,6 +304,3 @@ button
 
   &__indicator 
     color: var(--accent) !important
-
-    &:hover
-      color: var(--text-primary) !important 
